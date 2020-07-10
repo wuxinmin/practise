@@ -1,0 +1,12 @@
+ HTML手册（网站：mdn web docs）
+emmet（快捷插件）
+Css  <Cascading Style Sheets>层叠样式表（网址：Css.doye）
+定义如何显示HTML
+解决了内容与表现分离的问题
+样式：
+      1.内联样式
+      2.内部样式
+      3.外部样式  列如  style.css
+css权重
+！import>内联（内联样式《style》）>id（选择器）>class|属性|伪装（选择器）>标签（选择器）|伪元素>通配符
+  

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* let name = Symbol();
+        
+        let obj = {
+            name: 'xiaoming',
+            age: 15,
+            [name]: 'xiaoniu'
+        }
+        console.log(obj);
+        console.log(obj[name]); //xiaoniu  */
+
+
+        let name = Symbol();
+        
+        let obj = {
+            name: 'xiaoming',
+            age: 15,
+           [name]: 'xiaoniu'
+        }
+        
+        for(let item in obj) {
+            console.log(item);  // name age 但是不能输出Symbol，也就是没有办法通过遍历取到
+        }
+        
+    </script>
+</body>
+</html>

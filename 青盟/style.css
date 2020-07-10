@@ -1,0 +1,6 @@
+/* 外部样式 */
+p{
+    /* 斜体 */
+    font-style: italic;
+    color: green;
+}

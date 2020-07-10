@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        防抖与节流：减少函数不必要的触发次数，能够在一定程度上提高性能，避免资源的浪费。
+        函数防抖：一个需要频繁触发的函数，在规定时间内只让最后一次生效，前面几次不生效
+        防抖应用：百度的搜索框
+    -->
+    <button id="btn">点击按钮</button>
+    <script>
+        var oBtn = document.getElementById('btn');
+        // oBtn.onclick = function () {
+        //     console.log(Date.now());
+        // }
+
+        /* 
+        防抖函数
+        fn 需要防抖的一个方法
+        delay 时间间隔
+         */
+        function debounce(fn, delay) {
+            var Timer;
+            //用闭包  保存上一次的timer
+            return function () {
+                console.log(this);//这里的this指向dom元素
+                if (Timer) clearTimeout(Timer);
+                Timer = setTimeout(function () {
+                    fn.call(this);//如果在这一块改变this指向就可以解决下面指向window问题,但是此时的this是定时器，定时器指向window，所以还要改变定时器的this
+                }.bind(this), delay)//这个this就是改变定时器的this
+            }
+        }
+        oBtn.onclick = debounce(function () {
+            console.log(this);//此时this指向的是window，我们想要的是指向dom元素，原因：debouch指向window
+            console.log(Date.now());
+        }, 3000)        
+    </script>
+</body>
+
+</html>

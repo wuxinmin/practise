@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        this 永远指向一个对象
+        this的指向:给谁绑定的方法或事件,this就指向谁,也就是这个方法归属谁，this就指向谁
+        
+        
+        1.在普通的自定义函数里 this -> window
+        2.在定时器里（setTimeout/ setInterval） this -> window
+        3.在普通的自定义的对象里 this->当前对象（obj）
+        4.在类里 this-> 实例化对象
+        5.在事件处理函数里 this-> 绑定事件的DOM元素
+    -->
+</body>
+<div>123</div>
+<script>
+    //1.自定义函数
+    function fun1() {
+        console.log(this);//this 指向window
+    }
+    fun1();
+
+    //2.在定时器中
+    setTimeout(function () {
+        console.log(this);//this 指向window
+    }, 1000)
+
+    //3.在自定义对象中
+    var obj = {
+        name: 'zs',
+        age: 18,
+        fun: function () {
+            console.log(this); //this 指向obj
+        }
+    }
+    obj.fun();
+
+    var obj1 = {
+        name: 'zs',
+        age: 18,
+        student: {
+            name: 'ls',
+            age: 19,
+            fun: function () {
+                console.log(this.name); //this 指向student
+            }
+        }
+    }
+    obj1.student.fun();
+
+
+    //4.在类里面
+    function Person(name) {
+        this.name = name; //this 指向实例化对象
+    }
+    var p1 = new Person('xm');
+
+
+    //5.在事件处理函数里
+    var oDiv = document.getElementsByTagName('div')[0];
+    oDiv.onclick = function () {
+        console.log(this);  //this 指向div（DOM）元素，dom是文档对象模型
+    }
+
+</script>
+
+</html>

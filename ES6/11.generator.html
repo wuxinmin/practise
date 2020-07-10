@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        generator函数:
+        在function 关键字与 函数名之间加一个 *
+
+     -->
+
+     <script>
+         function * fun1() {
+            console.log('hello');
+            //yield 执行完了yield后的方法后停止
+            let res = yield request1(); //res的值是next方法调用的时候传递的参数
+            console.log('res:',res);  
+            console.log('world');
+         }
+         //方法返回的是一个指针对像 需要调用next（）执行
+        let f1 = fun1();
+
+        console.log(f1.next());//{value: undefined, done: false}
+         /* 
+          next 方法返回一个对象
+            done 当前函数数量是否执行
+             value 表示yield表达式的返回值
+          */
+
+         function request1() {
+             setTimeout(() => {
+                 let obj = {
+                     name: 'zs',
+                     age: 18
+                 }
+                 console.log('请求成功');
+                 //这里调用的时候吧obj传进去
+                 console.log(f1.next(obj));  //{ value: undefined, done: true}
+             },1000)
+
+             return 'request1 函数返回值';
+         }
+     </script>
+</body>
+</html>

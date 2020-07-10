@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* 这是一个公共文件 */
+//
+@mixin arow($dir,$col:#000,$size:10px) {
+    width: 0;
+    height: 0;
+    border: $size solid transparent;
+    // border-top-color: $col;
+    @if ($dir == "top") {
+        border-bottom-color: $col;
+    }
+    @else if ($dir == "bottom") {
+        border-top-color: $col;
+    }
+    @else if ($dir == "left") {
+        border-right-color: $col;
+    }
+    @else if ($dir == "right") {
+        border-left-color: $col;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 300px;
+            margin: 100px auto 0;
+           
+            
+        }
+        #menu{
+            height: 40px;
+            width: 100%;
+        }
+        #menu>li{
+            list-style: none;
+            color: darkorange;
+            background: #eeeeee;
+            float: left;
+            width: 100px;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        #menu>li.active{
+            color: #ffffff;
+            background: tomato;
+        }
+        #contect>div{
+            height: 200px;
+            width: 100%;
+            background: sandybrown;
+            color: #ffffff;
+            display: none; 
+        }
+        #contect>.selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="active">HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <div id="contect">
+            <div class="selected">html课程。。。</div>
+            <div>Css课程。，。，</div>
+            <div>JavaScript是一门。。。</div>
+        </div>
+    </div>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        var oContect = document.getElementById('contect');
+        var aDiv = oContect.getElementsByTagName('div');
+
+        for(var i=0; i<aLi.length; i++){
+            (function(i){
+                aLi[i].onclick = function(){
+                for(var j=0; j<aLi.length; j++){
+                    aLi[j].className = '';
+                    aDiv[j].className = '';
+                }
+                aLi[i].className = 'active';
+                aDiv[i].className = 'selected';
+            }
+            })(i)
+            
+            
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>词法作用链</title>
+</head>
+<body>
+    <script>
+        //词法作用域是指在定义（或声明）他们的作用域里运行，
+        //而不是在执行（或调用）他们的作用域里运行
+        var value = 1;
+        function foo(){
+            console.log(value);
+        }
+
+        function bar(){
+            var value = 2;
+            foo();
+        }
+        bar();
+
+    </script>
+</body>
+</html>

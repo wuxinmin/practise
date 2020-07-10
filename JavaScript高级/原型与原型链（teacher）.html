@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    函数下的属性是 prototype
+    对象下的属性是 __ptoto__
+   -->
+  <script>
+    // 类： 类名首字母大写， 属性放在构造函数中，方法放在原型下
+    // 构造函数: 用new关键字定义的函数被称之为构造函数
+    // 为什么要使用构造函数： 为了得到一些具有相同属性的对象，通过构造函数来创建比较方便
+    function Person(name) {
+      this.name = name
+      // 方法写在构造函数中，每创建一个实例化对象都会新创建一个函数，对内存有损耗，为了提升性能需要把方法放在原型下
+      // this.say = function() {
+      //   console.log('say hello....')
+      // }
+    }
+    // 原型 prototype 
+    // 原型是为了解决实例化对象的数据不能共享的缺点
+    Person.prototype.eating = function() {
+      console.log(this.name + ' is eating....')
+    }
+
+    // p1 实例化对象
+    var p1 = new Person('zs')
+
+    // console.dir() 会输入对象下所有的属性以及属性的值
+    console.dir(Person) // Person下会有一个属性 prototype属性
+    console.dir(p1.constructor) // Person  p1.constructor 可以获取到实例化对象的构造噶不是故意
+    // prototype下有一个constructor属性 -> 值就是构造函数（Person）
+    console.log(Person.prototype)
+    // __proto__ 实例化对象下的一个属性
+    console.log(p1.__proto__ === Person.prototype)
+
+
+    // function person2 (name) {
+    //   this.name = name
+    // }
+    // var p2 = person2('zs')
+    // console.log(p2.constructor)
+
+    function person3(name) {
+      return {
+        name: name
+      }
+    }
+    var p3 = person3('zs')
+    console.log(p3.constructor) // Object 可以理解为金字塔尖 所有的源头 所有的函数都继承自Object
+
+
+
+  </script>
+</body>
+</html> 

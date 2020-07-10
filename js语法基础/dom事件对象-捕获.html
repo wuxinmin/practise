@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #a {
+            width: 400px;
+            height: 400px;
+            background: #f00;
+        }
+
+        #b {
+            width: 300px;
+            height: 300px;
+            background: #0f0;
+        }
+
+        #c {
+            width: 200px;
+            height: 200px;
+            background: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+
+    <div id="a">
+        a
+        <div id="b">
+            b
+            <div id="c">
+                c
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        //此处function就是事件处理函数，function括号后的是形参
+        btn.onclick = function (e) {
+            //处理函数  e也是一个对象
+
+            //因为ie中需要window.  而chrome中应用e.  兼容性问题
+            e = e || window.event;
+            console.log(e.type);
+        };
+
+        //层层冒泡，点击c
+        var divA = document.getElementById('a');
+        var divB = document.getElementById('b');
+        var divC = document.getElementById('c');
+
+
+        //false冒泡  true 捕获
+        divA.addEventListener('click',function(){
+            console.log('捕获-a');
+        },true);
+        divB.addEventListener('click',function(){
+            console.log('捕获-b');
+        },true);
+        divC.addEventListener('click',function(){
+            console.log('捕获-c');
+        },true);
+        divA.addEventListener('click',function(){
+            console.log('冒泡-a');
+        },true);
+        divB.addEventListener('click',function(){
+            console.log('冒泡-b');
+        },false);
+        divC.addEventListener('click',function(){
+            console.log('冒泡-c');
+        },false);
+    </script>
+</body>
+
+</html>

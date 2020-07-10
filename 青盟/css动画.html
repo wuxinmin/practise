@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div0{
+            width: 200px;
+            height: 200px;
+            border:1px dashed #000;
+            margin: 100px;
+            perspective: 800px;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;   
+            /* transform: rotate(30deg); */
+            /* 默认旋转点是中间  但是可以用transform-origin设置 */
+            /* transform-origin: 0 0; */
+            /* 平移 */
+            /* transform:translateY(30px) translateX(20px); */
+            /* 缩放 成原来的0.5倍*/
+            /* transform: scale(0.5); */
+            /* 扭曲 */
+            /* transform: skew(30deg); */  
+            transform: rotateX(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="div0">
+        <div id="div1"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    面向过程 C
+    面向对象 C++
+    把大象装冰箱总共分几步
+    
+      1.面向过程分析方式
+        a. 打开冰箱门
+        b. 把大象装冰箱
+        c. 把冰箱门关上
+      2.面向对象分析方式
+        a. 大象  属性：体积
+        b. 冰箱  属性：容积
+        c. 隐藏对象 方法：把大象装进冰箱
+    javascript是一门基于对象的语言，并不是真正的面向对象的语言，es5里没有class类，通过function来模拟类
+    类是具有相同属性和方法的集合
+    人->类
+    小明-> 实例化对象
+   -->
+
+  <script>
+    // 通过function关键字创建一个类，类名首字母大写
+    // 类/构造函数/构造方法
+    function Person(name, age) {
+      // this -> 实例化对象
+      this.name = name
+      this.age = age
+
+      // 如果在构造函数里定义方法的化，那么每次创建实例化对象的时候都会生成一个新的方法
+      // this.eating = function() {
+      //   console.log(this.name + ' is eating...')
+      // }
+    }
+
+    // 方法下有一个prototype属性 这个属性叫做原型
+    // 原型下有一个属性叫constructor 属性值是当前这个函数
+    console.log('prototype:', Person.prototype)
+
+    // 原型下的属性和方法会被所有的实例化对象所共享
+    Person.prototype.eating = function() {
+      console.log(this.name + ' is eating...')
+    }
+    // Person.prototype.id = 1001
+
+    // 实例化对象
+    var p1 = new Person('zs', 18)
+    console.log(p1.id)
+    p1.eating()
+
+    var p2 = new Person('xm', 20)
+    console.log(p2.id)
+    p2.eating()
+
+
+    /*
+    *  类： 具有相同属性和方法的集合叫做类
+    *  定义类： 通过function来模拟类
+    *  规则：类名首字母大写 属性定义在构造函数里 方法写在原型下
+    */
+
+
+  </script>
+</body>
+</html> 

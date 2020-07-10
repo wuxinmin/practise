@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Map添加要用.set添加  key值不允许重复
+       /*  let map1 = new Map();
+        map1.set('name','aaa');
+        console.log(map1); //key: "name"  value: "aaa"
+
+        console.log(map1.get('name'));  //取值（value）  aaa */
+
+
+    //WeakMap仅接受对象,key只接收对象 。。。而weakset所有都接收对象那个
+    let weakmap = new WeakMap();
+    weakmap.set({name: 'aaa'},'123');
+    console.log(weakmap);
+    </script>
+</body>
+</html>

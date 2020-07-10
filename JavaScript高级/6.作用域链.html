@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        作用域链：如果寻找一个变量的话，在当前作用域内没有找到的话，就到父作用域寻找，如果父作用域也没有，再一层一层向上寻找，指导找到全局作用域，
+      如果全局作用域还没有就宣布放弃，这种一层一层的关系就是作用域链
+     -->
+     <script>
+         var a = 1;
+         function fn1(){
+             var b = 2;
+             function fn2(){
+                 var c =3;
+                 console.log(a);//1
+                 console.log(b);//2
+                 console.log(c);//3
+             }
+             fn2();
+         }
+         fn1();
+
+
+
+    //去定义方法的时候去找参数，而不是在调用方法的时候去找
+    var x = 10;
+    function fn3(){
+        console.log(x);  //输出10
+    }
+    function show(f){
+        var x = 20;
+        (function(){
+            f();
+        })()
+    }
+    show(fn3);
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* 引用公共 */
+/* 这是一个公共文件 */
+/* 利用$定义变量 */
+/* 混合宏  封装一个三角箭头 */
+body {
+  background: #cccc;
+  /* 嵌套 */
+  /* 继承 */ }
+  body .header .header-logo {
+    width: 200.2px;
+    /* 绝对值 */
+    height: 200px; }
+  body .header a {
+    color: green;
+    border-left: 2px solid #000;
+    border-right: 2px solid pink;
+    /* 利用&可以取到父元素 */ }
+    body .header a:hover {
+      color: blue; }
+  body #div1, body #div2 {
+    width: 0;
+    height: 0;
+    border: 30px solid transparent;
+    border-right-color: red; }
+
+.item1 {
+  width: 100; }
+
+.item2 {
+  width: 200; }
+
+.item3 {
+  width: 300; }
+
+.item4 {
+  width: 400; }
+
+.nav1 {
+  width: 100; }
+
+.nav2 {
+  width: 200; }
+
+.nav3 {
+  width: 300; }
+
+.nav4 {
+  width: 400; }
+
+.nav5 {
+  width: 500; }
+
+.success {
+  width: 200px; }
+
+.error {
+  width: 200px; }
+
+.warn {
+  width: 200px; }
+
+.aa-5 {
+  width: 500px; }
+
+.aa-4 {
+  width: 400px; }
+
+.aa-3 {
+  width: 300px; }
+
+.aa-2 {
+  width: 200px; }
+
+.aa-1 {
+  width: 100px; }
+
+/* 函数 */
+#div5 {
+  width: 500px;
+  background: green;
+  height: 100px; }
+
+/*# sourceMappingURL=test1.css.map */

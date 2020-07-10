@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*  let arr = new Set([1,2,3,4,5]);  //传的是数组，类数组
+        arr.add(8);  //数组往里面加值是push，set往里面加值用add
+        arr.add(9);  
+        arr.delete(4);//删除具体的值
+        console.log(arr); */
+
+
+        //移除重复的值
+        /* let arr2 = [1,2,3,4,5,4,3,2,4]
+        let arr3 = [];
+        for(let i=0; i<arr2.length; i++){
+            if(!arr3.includes(arr2[i])){
+               arr3.push(arr2[i]); 
+            }
+        }
+        console.log(arr3); */
+
+        //利用Set特性移除重复值
+        /* let arr2 = [1,2,3,4,5,4,3,2,4]
+        let arr3 = new Set(arr2);
+        //console.log(arr3); //可以取消重复但是返回的是一个Set类型（类数组）
+        console.log(Array.from(arr3)); //利用Array.from(),返回一个真正的数组 */
+        
+        //has
+        /* let arr2 = [1,2,3,4,5];
+        let arr3 = new Set(arr2);
+        console.log(arr3.has(4));  //判断有没有4  true*/
+
+
+        //clear
+        /* let arr2 = [1,2,3,4,5];
+        let arr3 = new Set(arr2);
+        arr3.clear();
+        console.log(arr3);  //直接是一个空的 */
+
+        //遍历 for...of   左边是变量 右边是遍历的对象
+
+        /* let arr2 = ['a','b','c','d','e'];
+        let arr3 = new Set(arr2);
+
+        for(let [item,index] of arr3.entries()) {
+            console.log(item,index);//值和索引一样           
+        } */
+
+
+
+        //WeakSet:所有成员只能是对象，key value
+        let weakset = new WeakSet();
+        let obj = {
+            name:'333'
+        }
+        weakset.add(obj);
+        weakset.add(obj);
+        console.log(weakset);//返回一个333和set一样不允许重复
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Css语法基础</title>
+    <style>
+       /* 标签选择器 */
+       /* p{
+            color: red;
+            font-size: 46px;
+        }
+        h1{
+            color: #0000ff;
+            font-size: 46px;
+        } */
+        p,h1{
+            font-size: 46px;
+        }
+        /* #就是id */
+        #p1{
+            color: red;
+        }
+        /* 后带选择器（不推荐，范围大） */
+        div h1{
+            color: salmon;
+        }
+        /* 后带选择器（范围小） */
+        #div1{
+            color: springgreen;
+        }
+        /* class类选择器 */
+        .bg-red{
+            background: red;
+        }
+        .fs-36{
+            font-size: 36px;
+        }
+        .bg-blue{
+            background: #0000ff;
+        }
+        /* 多类选择器在声明时候后面会覆盖前面 */
+        #p2{
+            color: red;
+            background: blue;
+        }
+        .bg-green{
+           background: #00ff00 !important;
+           /* 加入！import权重最高，style中黄色被覆盖，
+           又变成绿色，不推荐使用会打乱默认值 */
+        }
+        /* *号指选中所有 */
+        *{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+   <p id="p1">这是一个段落</p> 
+   <p>这是第二个段落</p>
+   <h1>这是一个标题</h1>
+   <div>
+       <h1>这是另一个标题</h1>
+   </div>
+   <div id="div1">
+        <h1>这是另一个标题</h1>
+    </div>
+    <ul id="ul1">
+        <li>item 1</li>
+        <!-- 类选择器 -->
+        <li class="bg-red fs-36 bg-blue">item 2</li>
+        <li class="bg-red">item 3</li>
+    </ul>
+    <!-- ！import>内联（内联样式《style》）>id（选择器）
+    >class|属性|伪装（选择器）>标签（选择器）|伪元素>通配符 -->
+    <p id="p2" class="bg-green" style="background:yellow">演示权重值例子</p>
+    <!-- style权重高于id，id高于class 绿色蓝色（#p2）覆盖，蓝色被黄色覆盖-->
+</body>
+</html>

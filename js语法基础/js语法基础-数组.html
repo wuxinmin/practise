@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* new Array();
+        arr[0] = 11;
+        arr[1] = 22; */
+
+        /* var arr = [2, 5, 8];//数组的直接量
+        arr.push(10);//在数组后添加一个元素10
+        arr.pop();//删除一个元素
+        arr.unshift(1);//在最前加入一个元素
+        arr.shift();//删除最前元素 */
+
+        var arr = ["john","alice","bob"];
+        arr.splice(1);//当第二个参数没有给 1 指删除索引后所有参数
+        arr.splice(1,1);//当第二个参数写1，就指从索引开始删一个，若写2就指删两个
+        arr.splice(1,1,"lily","lisi");//指从索引（第二个）开始删除，删除一个，再添加一个lily和lisi元素
+        for (var i = 0; i < 3; i++) {
+            //在未知数组个数，利用 arr.length 
+            console.log(arr[i]);
+        }
+    </script>
+</body>
+
+</html>

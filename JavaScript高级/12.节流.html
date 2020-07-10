@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        函数的节流： 一个执行一次后，只有大于设定的执行周期之后才执行第二次
+     -->
+
+    <script>
+        /* document.onmousemove = function(){
+            console.log(Date.now());
+        } */
+
+
+        function throttle(fn, delay) {
+            var startTime = 0;  //starttime表示上一次执行的时间
+            return function () {
+                //这里this指向dom
+                var nowTime = Date.now();//获取当前时间
+                if (nowTime - startTime > delay) {
+                    fn.call(this);//改变this指向
+                    startTime = nowTime;
+                }
+            }
+
+        }
+        document.onmousemove = throttle(function () {
+            console.log(this);  //同样这里的this指向window，经过上面fn.call(),就改变了此处this的指向。
+            console.log(Date.now());
+        }, 2000)
+
+    </script>
+</body>
+
+</html>

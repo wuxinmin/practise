@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #parent{
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            margin-top: 50px;
+            /* overflow: hidden; */
+            border: 1px soild transparent;
+        }
+        #child{
+            width: 100px;
+            height: 100px;
+            background: green;
+            margin-top: 100px;
+        }
+        /* 外边距合并
+               两个垂直方向的外边距相遇的时候 会发生合并
+               合并的只时两者中外边距较大的那个值  
+               解决办法：
+               1.父元素添加  overflow:hidden; 会触发BFC  就变成两个独立空间
+               2。父元素添加边框 透明边框border: 1px soild transparent;
+               3.父元素或子元素定位或浮动也好使(不推荐)
+
+        */
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="child"></div>
+    </div>
+</body>
+</html>

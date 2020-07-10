@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #a {
+            width: 400px;
+            height: 400px;
+            background: #f00;
+        }
+
+        #b {
+            width: 300px;
+            height: 300px;
+            background: #0f0;
+        }
+
+        #c {
+            width: 200px;
+            height: 200px;
+            background: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+
+    <div id="a">
+        a
+        <div id="b">
+            b
+            <div id="c">
+                c
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        //此处function就是事件处理函数，function括号后的是形参
+        btn.onclick = function (e) {
+            //处理函数  e也是一个对象
+
+            //因为ie中需要window.  而chrome中应用e.  兼容性问题
+            e = e || window.event;
+            console.log(e.type);
+        };
+
+        //层层冒泡，点击c
+        var divA = document.getElementById('a');
+        var divB = document.getElementById('b');
+        var divC = document.getElementById('c');
+
+        divA.onclick = function () {
+            console.log('a');
+        };
+        divB.onclick = function () {
+            console.log('b');
+        };
+        divC.onclick = function () {
+            e = e || window.event;
+            console.log('c');
+            //每次点击c都会冒泡出一堆，写入停止 propagation（传播）此语法也有兼容性问题
+            e.stopPropagation();
+            //ie6用  e.cancelBubble = true;阻止传播
+        };
+        //此时点c时会打印出cba  原因：事件冒泡
+
+        //body
+        document.body.onclick = function () {
+            console.log('body');
+        };
+
+        //html
+        document.documentElement.onclick = function () {
+            console.log('html');
+        };
+
+        //document
+        document.onclick = function(){
+                console.log('document');
+            };
+    </script>
+</body>
+
+</html>

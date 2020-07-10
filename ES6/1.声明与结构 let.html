@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    let与var的区别：
+    1.let 关键字声明的变量 不可以重复声明，否则会报错
+    2.let 关键字声明的变量不存在变量提升的问题，会报错
+    3.块级作用域内通过let关键字声明的变量，在定义的作用域外获取不到相应的变量
+    4.暂时性死区（在当前作用域内不允许有同名的变量进来）
+    在块级作用域内 let 生命的变量会形成一个封闭的死区，只能在声明之久用，否则报凑
+ -->
+
+<body>
+    <script>
+        var a = 90;
+        var a = 30;
+        console.log(a); //30
+
+        /* let b = 90;
+        let b = 30;
+        console.log(b); //报错 */
+
+        // var 关键字定义的变量会有变量提升的问题
+        console.log(c);
+        var c = 1;
+        //----->相当于
+        var c;
+        console.log(c);
+        c = 1;
+
+        //console.log(d);// Cannot access 'd' before initialization 不能接收d在声明之前，没有变量提升问题
+        let d = 2;
+
+        /* 
+        作用域：
+           1.全局作用域
+           2.局部作用域（函数作用域）
+           3.块级作用域 {}
+         */
+        if(true){
+            var e = 123; //全局变量
+        }
+        console.log(e); //输出 123
+
+        if(true){
+            let f = 123;
+        }
+        //console.log(f); //报错 f is not defined
+
+        for(var i=0; i<3; i++){
+            //some thing
+        }
+        console.log(i);  //i =3
+        for(let j=0; j<3; j++){
+            //some thing
+        }
+        //console.log(j); //报错 j is not defined
+        // undefined 声明了未定义  not defined 未声明未定义
+
+        var x = 6
+        function fun() {
+            console.log(x) // undefined
+            var x = 9  // 变量提升问题
+        }
+        fun()
+
+        var y = 6
+        function fun1() {
+            console.log(y) // 全局变量
+            y = 9
+        }
+        fun1()
+
+
+        let z = 6
+        function fun2() {
+            console.log(z)//形成封闭型死区
+            let z = 9
+        }
+        fun2()
+    </script>
+</body>
+
+</html>

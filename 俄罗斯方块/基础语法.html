@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础语法演示</title>
+    <style>
+    table{
+        border: 1px;
+    }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>111</td>
+            <td>223332</td>
+        </tr>
+    </table>
+    <script>
+        //js在这里
+        //变量
+        var name = 'list';//相当于存于js内存
+        var age = 23;
+        //js中的数据类型
+        //两种：基本数据类型、应用类型
+        //基本数据类型：number string boolean undefined null
+        //引用类型：object对象
+        //var （variable）
+        var a = 5.5; //number
+        var b = '我是大帅哥'; //string
+        var c=true; //boolean
+        var d ;
+        var e=null;//空（占位）
+        console.log(d);//undefined非定义
+        //alert(name);
+        console.log(name);
+        //document.write(name);
+
+        //运算符
+        //数学运算符 +-*/%
+        //自增自减 ++ --
+        //逻辑运算 && || ！
+        //比较运算符 < > >= <= ==
+        //三目运算符 : ?
+
+        var aa=5;
+        var bb=6;
+        var cc="abc";
+        ++aa; 
+        console.log( aa+bb );
+        console.log( aa+cc );//把5当做字符串，生成5abc
+        console.log( aa-cc );//得到NaN,not a number
+        console.log( aa++ );//先输出在自加
+        if(1==1&&2==3){
+            console.log( 'yes...' );
+        }
+        console.log( 5/0);//输出：infinty（无群）但c、Java报错
+        console.log( !aa );//在js中，非零和非零的数字相当于ture
+        //var bb==aa==5 ? 'yes':'no';
+        function add(a,b){
+            //形参
+            var c=a+b;
+            return c;
+        }
+        var cc=add(4,5);//实参
+        console.log(cc);
+
+
+
+        //数组: array 数据的组合
+        var arr=new Array("aa","bb","cc");
+        console.log(arr);
+        //var arr=new Array(5);//5个
+        arr.push('ee');//往数组中压入ee
+
+        for(var i=0;i<arr.length;i++){
+            console.log(arr[i]);
+
+        }
+
+
+        //object对象 everything is object
+        //对象：研究属性、方法
+
+        var person ={
+            name:'list',
+            age:23,
+            brother:{
+                name:'。。。',
+                wife:{
+                    name:'.0256'
+                }
+            }
+        };
+        console.log(person.brother.wife.name);//找其中一个
+
+
+        function test(){
+            var a =5+5;
+            return {
+                x:5,
+                y:6
+            };//返回一个对象,就可以返回多个值，但是不能直接返回多个值
+        }
+        var b=test();
+        //Math.random()  0-1之间的随机数
+        //Math
+
+   
+    </script>
+</body>
+</html>

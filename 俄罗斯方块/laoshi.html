@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块</title>
+    <style>
+        #game-board {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        #game-board td {
+            width: 30px;
+            height: 30px;
+            border: 1px dashed #00cccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="game-board"></table>
+
+    <script>
+        var board = document.getElementById('game-board');
+        //定义用来存储方块的二维数组
+        //"0100110010000000"
+        var blocks = [
+            [0xCC00],
+            [0x8888, 0xF000],
+            [0x8C40, 0x6C00],
+            [0x4C80, 0xC600],
+            [0x44C0, 0x8E00, 0xC880, 0xE200],
+            [0x88C0, 0xE800, 0xC440, 0x2E00],
+            [0x4E00, 0x8C80, 0xE400, 0x4C40]
+        ];
+        var block = [];//[  {x:0,y:4}, {x:1,y:3}, {x:1,y:4}, {x:2,y:3} ];
+
+        var rand, //随机数
+            dimension = 0;//维度
+
+        var grid = new Array(18);
+
+
+        //1. 初始化游戏面板
+        for (var i = 0; i < 18; i++) {
+            var tr = board.insertRow();
+            grid[i] = new Array(10);
+            for (var j = 0; j < 10; j++) {
+                tr.insertCell();
+                grid[i][j] = 0;
+            }
+        }
+
+
+        //2. 生成方块
+        function createBlock(isNew) {
+            //"100110010000000"
+            if (isNew) {//如果要创建新方块
+                rand = Math.floor(Math.random() * 7);//获取0到6之间的随机数
+            } else {//变形
+                dimension = ++dimension % blocks[rand].length;
+            }
+
+            var blockStr = blocks[rand][dimension].toString(2);//将16进制数转换成2进制，但有可能缺前导0
+
+            //将缺失的前导0补全
+            if (blockStr.length < 16) {
+                var len = 16 - blockStr.length;//缺多少0
+                for (var i = 0; i < len; i++) {
+                    blockStr = "0" + blockStr; // "0" + "100110010000000" => "0100110010000000"
+                }
+            }
+            //"0100110010000000" => ["0100", "1100", "1000", "0000"]
+            var blockArr = [], tempStr = "";
+            for (var i = 0; i < blockStr.length; i++) {
+                tempStr += blockStr[i];//tempStr = tempStr + blockStr[i]
+                if (tempStr.length == 4) {
+                    blockArr.push(tempStr);
+                    tempStr = "";
+                }
+            }
+
+            //找4*4矩阵中最左上角的点的坐标
+            var minX, minY;
+            if (isNew) {
+                minX = 0;
+                minY = 3;
+            } else {
+                minX = block[0].x;
+                minY = block[0].y;
+                for (var i = 1; i < 4; i++) {
+                    if (block[i].x < minX) {
+                        minX = block[i].x;
+                    }
+                    if (block[i].y < minY) {
+                        minY = block[i].y;
+                    }
+                }
+            }
+
+
+            //minX = 5, minY = 3
+            var newBlock = [];
+            for (var i = 0; i < blockArr.length; i++) {//4次
+                var str = blockArr[i]; //"1100","0110","0000","0000"
+                for (var j = 0; j < str.length; j++) {//4次
+                    if (str[j] == 1) {
+                        newBlock.push({
+                            x: i + minX, //6
+                            y: j + minY //4
+                        });
+                    }
+                }
+            }
+            return newBlock;
+        }
+
+        block = createBlock(true);//页面刚加载时，先创建一个
+        drawBlock();
+
+        //3.1 擦除现有方块
+        function easeBlock() {
+            for (var i = 0; i < 4; i++) {
+                board.rows[block[i].x].cells[block[i].y].style.background = 'transparent';
+            }
+        }
+        //3.3 绘制新方块
+        function drawBlock() {
+            for (var i = 0; i < 4; i++) {
+                board.rows[block[i].x].cells[block[i].y].style.background = 'red';
+            }
+        }
+
+        function easeBoard() {
+            for (var i = 0; i < 18; i++) {
+                for (var j = 0; j < 10; j++) {
+                    board.rows[i].cells[j].style.background = 'transparent';
+                }
+            }
+        }
+
+        function repaintBoard() {
+            for (var i = 0; i < 18; i++) {
+                for (var j = 0; j < 10; j++) {
+                    if (grid[i][j] == 1) {
+                        board.rows[i].cells[j].style.background = 'red';
+                    }
+                }
+            }
+        }
+
+        function move(direction) {
+            easeBlock();
+            //3.2 方块的x或y值+1或-1
+            if (direction == 'down') {
+                var isBottom = false;//标识位，用来标识是否触底，true到底，false没到底
+                for (var i = 0; i < 4; i++) {
+                    if (block[i].x == 17 || grid[block[i].x + 1][block[i].y] == 1) {
+                        isBottom = true;
+                        break;
+                    }
+                }
+                if (!isBottom) {//没到底
+                    for (var i = 0; i < 4; i++) {
+                        block[i].x++;
+                    }
+                } else {//到底
+
+                    for (var i = 0; i < 4; i++) {
+                        grid[block[i].x][block[i].y] = 1;
+                    }
+
+                    repaintBoard();
+
+                    block = createBlock(true);//生成新方块
+
+                    //5. 消行记分
+                    for (var i = 0; i < 18; i++) {
+                        for (var j = 0; j < 10; j++) {
+                            if (grid[i][j] == 0) {
+                                break;
+                            }
+                        }
+                        if (j == 10) {//说明该行全是1
+                            for (var k = i - 1; k >= 0; k--) {
+                                grid[k + 1] = grid[k];//将当前行替换为前一行
+                            }
+
+                            for (var m = 0; m < 10; m++) {
+                                grid[0][m] = 0;
+                            }
+                            easeBoard();
+                            repaintBoard();
+                        }
+
+                    }
+
+                    //6. 结束检测
+                    for(var i=0; i<10; i++){
+                        if(grid[0][i] == 1){
+                            alert('Game over!');
+                            clearInterval(timer);
+                            break;
+                        }
+                    }
+
+                }
+            } else if (direction == 'left') {
+                var canMove = true;//一个标识位，用来标识方块是否可以继续移动，true代表可移动，false不可移动
+                for (var j = 0; j < 4; j++) {
+                    if (block[j].y == 0 || grid[block[j].x][block[j].y - 1] == 1) {
+                        canMove = false;
+                        break;
+                    }
+                }
+                if (canMove) {
+                    for (var j = 0; j < 4; j++) {
+                        block[j].y--;
+                    }
+                }
+            } else if (direction == 'right') {
+                var canMove = true;//一个标识位，用来标识方块是否可以继续移动，true代表可移动，false不可移动
+                for (var j = 0; j < 4; j++) {
+                    if (block[j].y == 9 || grid[block[j].x][block[j].y + 1] == 1) {
+                        canMove = false;
+                        break;
+                    }
+                }
+                if (canMove) {
+                    for (var j = 0; j < 4; j++) {
+                        block[j].y++;
+                    }
+                }
+            }
+            drawBlock();
+        }
+
+
+        //4. 方块变形
+        function transform() {
+            //取下一个方块
+            var nextBlock = createBlock(false);
+            var result = checkBoundary(nextBlock);
+            if (result) { //是否可以变形
+                easeBlock();
+                block = nextBlock;
+                drawBlock();
+            } else {
+                dimension--;
+            }
+
+        }
+
+        function checkBoundary(block) {
+            for (var i = 0; i < 4; i++) {
+                if (block[i].x < 0 || block[i].x > 17 || block[i].y < 0 || block[i].y > 9) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //3. 方块移动
+        var timer = setInterval(function () {
+            move('down');
+        }, 1000);
+
+        //当键盘按下时
+        document.onkeydown = function (e) {
+            if (e.keyCode == 37) {//left
+                move('left');
+            } else if (e.keyCode == 39) {//right
+                move('right');
+            } else if (e.keyCode == 40) {//down
+                move('down');
+            } else if (e.keyCode == 38) {
+                transform();
+            }
+        };
+
+        
+
+        
+
+    </script>
+</body>
+
+</html>

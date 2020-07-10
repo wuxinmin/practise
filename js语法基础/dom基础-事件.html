@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <script>
+        var btn = document.getElementById('btn');
+       /*  ///点击事件
+        btn.onclick = function(){
+            // 操作
+            console.log(11);
+        };
+        btn.onclick = function(){
+            console.log(22);
+        };
+        //此时打印出 22 */
+        btn.addEventListener('click',function(){
+            console.log(11);
+        },false);
+        btn.addEventListener('click',function(){
+            console.log(22);
+        },false); 
+        //多次绑定，打印出 11 22   iE8和IE8前的语法不支持
+
+        //ie8前，而且不支持第三个参数(事件捕获)
+        btn.attachEvent('onclick', function(){
+
+        });
+
+
+        //处理浏览器兼容性问题
+        if(btn.addEventListener){
+            btn.addEventListener('click',function(){ 
+            console.log(11);
+        },false);
+        }else{
+            //但是attachEvent会是this走丢
+            btn.attachEvent('onclick', function(){
+
+}); 
+        }
+         
+    </script>
+
+</body>
+</html>

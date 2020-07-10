@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p1 = new Promise((resolve,reject) => {
+            console.log('开始发送请求1');
+
+            setTimeout(() => {
+                //obj模拟请求成功拿到的数据 相当于Ajax中的 xmlhttp.responseText
+                let obj = {
+                    name:'zs',
+                    age: 18
+                }
+
+                let tmp = true;
+                if(tmp) {
+                    resolve(obj);
+                } else {
+                    reject();
+                }
+            },1500)
+        }).then((data) => {
+            console.log('请求1成功');
+            console.log(data);
+
+            return new Promise((resolve,reject) => {
+                console.log('开始发送请求2');
+                setTimeout(()=>{
+                    let tag = true;
+                    if(tag) {
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                },1000)
+            })
+        }, () => {
+            console.log('请求1失败');
+        }).then(() =>{
+            console.log('请求2成功');
+            return new Promise((resolve,reject) => {
+                console.log('开始发送请求3');
+                setTimeout(() => {
+                    let x = true;
+                    if(x) {
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                },1000)
+            })
+        }).catch(() => {
+            console.log('请求2失败');
+        }).then(() =>{
+            console.log('请求3成功');
+        }).catch(() => {
+            console.log('请求3失败');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu {
+            display: none;
+            width: 100px;
+            background: #eeeeee;
+            padding: 5px 0;
+            border-radius: 5px;
+            position: absolute;
+        }
+
+        #menu>li {
+            height: 30px;
+            line-height: 30px;
+            /* 居中 */
+            text-align: center;
+            /* 鼠标移入变成小手 */
+            cursor: pointer;
+            list-style: none;
+        }
+
+        #menu>li:hover {
+            color: #fff;
+            background: paleturquoise;
+        }
+
+        #menu>.line {
+            border-top: 1px solid #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li>打开</li>
+        <li>下载</li>
+        <li class="line">复制</li>
+        <li>移动</li>
+        <li>删除</li>
+        <li class="line">重命名</li>
+        <li>分享</li>
+    </ul>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = document.getElementsByTagName('li');
+        // oncontextmenu 鼠标点击右键时，打开默认右键菜单的触发事件
+        document.oncontextmenu = function (event) {
+            // 阻止浏览器的默认行为（在页面中点击右键默认会展示浏览器的自带的右键菜单）
+            event.preventDefault()
+
+            // 事件处理函数 显示ul元素
+            oMenu.style.display = 'block';
+
+            // 获取鼠标点击时的坐标(不带单位)
+            var top = event.clientY;
+            var left = event.clientX;
+            // 修改menu的定位 设置top和left的时候需要加上单位（px）
+            oMenu.style.top = top + 'px';
+            oMenu.style.left = left + 'px';
+        }
+        document.onclick = function () {
+            oMenu.style.display = 'none';
+        }
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function () {
+                // 把li的内容打印出来
+                // console.log(aLi[i].innerHTML) => aLi[7].innerHTML
+                console.log(this.innerHTML);
+
+                /* 
+                  不能直接写aLi[i]的原因：
+                    页面加载的时候js代码顺序执行 加载完之后 
+                    for循环就执行完成了 这个时时候 i=7跳出循环
+                    点击事件时用户手动触发后才会执行 这个时候i=7
+                    并没有aLi[7]这一项，所有直接使用aLi[i]就会报错
+                    可以使用this来代替
+                    给谁绑定的事件谁就是this
+                */
+            }
+        }
+
+    </script>
+</body>
+
+</html>

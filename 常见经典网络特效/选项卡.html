@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            background: #eeeeee;
+            width: 300px;
+            margin: 100px auto;
+
+        }
+
+        #menu {
+            list-style: none;
+            height: 40px;
+            width: 100%;
+        }
+
+        #menu>li {
+            color: #ff8907;
+            float: left;
+            height: 100%;
+            width: 100px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        #menu>.active {
+            color: #ffffff;
+            background: #ff8907;
+        }
+
+        #content {
+            height: 100%;
+        }
+
+        #content>div {
+            background: coral;
+            color: cornsilk;
+            height: 150px;
+            display: none;
+            line-height: 50px; 
+        }
+
+        #content>.selected {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="active">HTML</li>
+            <li>Css</li>
+            <li>JS</li>
+        </ul>
+        <div id="content">
+            <div class="selected">html 25984132384</div>
+            <div>css 3548962139</div>
+            <div>javascript 852</div>
+        </div>
+    </div>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+        for (var i = 0; i < aLi.length; i++) {
+            // 给每一个li加一个自定义的属性index
+            aLi[i].index = i;
+
+            aLi[i].onclick = function () {
+                for (var j = 0; j < aLi.length; j++) {
+                    aLi[j].className = '';
+                    aDiv[j].className = '';
+
+                }
+                this.className = 'active';
+                aDiv[this.index].className = 'selected';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

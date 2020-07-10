@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.call()  改变this指向的方法  有多个参数  第一个参数是要改变的指针  后面所有的参数都是实参  方法会自动触发
+        2.apply() 改变this指向的方法  有两个参数  第一个参数是要改变的指针  第二个参数是一个数组    里面存的是方法需要的实参  方法会自动触发
+        3.bind()  改变this指向的方法  有多个参数  第一个参数是要改变的指针  后面所有的参数都是实参  方法不会自动触发 
+     -->
+     <script>
+         var obj = {
+             name: 'zs',
+             age: 18,
+             fun: function(){
+                 console.log(this.name);
+             },
+             child: {
+                 name: 'ls',
+                 age: 19,
+                 fun:function(){
+                     console.log(this.name);
+                 }
+             }
+         }
+         obj.fun();// zs
+         obj.child.fun();//ls
+
+         obj.fun.call(obj.child);
+
+         function fun1(a,b) {
+             console.log(this);
+             console.log(a);
+             console.log(b);
+         }
+        //  fun1.call(obj,1,2);
+        // fun1.apply(obj,[1,2]);
+        fun1.bind(obj,1,2)();
+
+
+        //升级例子
+        var obj2 = {
+            name: 'zs',
+            fun: function() {
+                console.log('this1:',this);//this 指向obj2
+                setTimeout(function(){
+                    console.log('this2:',this);//this指向window
+                }.bind(this),1000)//此处this为利用bind改变this指向，这里使用bind可以出现效果
+            }
+        }
+        obj2.fun();
+     </script>
+</body>
+</html>

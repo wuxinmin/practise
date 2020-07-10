@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        普通函数 =>箭头函数
+        1.去掉关键字 function
+        2.在（） 和 {} 之间加一个 =>
+
+        箭头函数
+            1.函数内部的this指向的对象，是定义时所在的对象而不是使用时的对象
+            （箭头函数内部的this指向的是父作用域中的this）
+            2.不可以当作构造函数（类），也就是说不可以使用new命令，否则会报错
+            3.不可以使用arguments对象。arguments 在函数体内不存在，如果要用的话，可以使用rest参数代替
+     -->
+    <script>
+        /*  let fun = function () { 
+             console.log('hello');
+         } */
+
+        let fun = () => {
+            console.log('hello');
+        }
+
+        /*    let person = {
+               name: 'zs',
+               age: 10,
+               eating: function () {
+                   console.log(this); //person
+                   setTimeout(function () {
+                       console.log(this); //window
+                   }, 1000)
+               }
+               person.eating();
+           } */
+
+
+        /*  let person = {
+             name: 'zs',
+             age: 10,
+             eating: function () {
+                 console.log(this); //person
+                 setTimeout( () => {
+                     console.log(this); //person  箭头函数内部的this指向的是父作用域中的this
+                 }, 1000)
+             }
+         }
+             person.eating(); */
+
+
+        let person = {
+            name: 'zs',
+            age: 10,
+            eating:  ()  => {
+                console.log(this); //window
+                setTimeout(() => {
+                    console.log(this); //window  箭头函数内部的this指向的是父作用域中的this
+                }, 1000)
+            }
+        }
+        person.eating(); 
+
+
+        //构造函数  将他改成箭头函数
+         /* Student(name,age) => {  //直接报错
+            this.name = name;
+            this.age = age;
+        }
+        let s1 = new Student('zs', 18);
+        console.log(s1); */
+
+
+
+       /*  let fn = function(){
+            console.log(arguments); //通过arguments获取到 形参x,y
+        }
+        fn(1, 2); */
+
+       /*  let fn = () => {
+            //console.log(x,y);
+            console.log(arguments);  
+        }
+        fn(1,2);  //报错 */
+
+        //可以用...rest来解决arguments报错问题，注：这里不一定只能写rest
+        // ...rest 表示剩余的参数 他是一个数组，里面是调用函数的时候传递的实参
+        let fn1 = (a, ...rest) => {
+            console.log(rest);
+        }
+        fn1(1, 2, 3);
+    </script>
+</body>
+
+</html>

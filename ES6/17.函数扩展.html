@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  //1.参数默认值与解构结合 
+         function foo(a,b) {
+             console.log(a+b);   //NaN            
+         }
+         foo(1)
+         function foo(a,b=10) {
+             console.log(a+b);   //4        
+         }
+         foo(1,3)
+         
+ 
+         //解构
+         function foo({name,age}) {
+             console.log(name,age);         
+         }
+         foo({name:'xx',age:'11'})
+ 
+         //2.方法名.length 返回没有指定默认值的参数个数
+         function foo(a,b) {
+             console.log(a,b);           
+         }
+         foo(1,2);
+         console.log(foo.length); //2 
+ 
+         function foo(a,b,c=1) {
+             console.log(a,b,c);           
+         }
+         foo(1,2,3);
+         console.log(foo.length); //2 foo.length获取所有没被设置为默认值的参数的长度
+         
+         function foo(a,b=2,c) {
+             console.log(a,b,c);           
+         }
+         foo(1,2,3);
+         console.log(foo.length);//1 foo.length获取所有没被设置为默认值的参数的长度，但是不能计算设置默认值后的 */
+
+
+        //3.name   返回函数名
+        /*  function foo(a,b) {
+             console.log(a,b);           
+         }
+         foo(1,2);
+         console.log(foo.name); //foo
+ 
+ 
+         let foo = function(){
+             console.log(14);
+             
+         }
+         console.log(foo.name); //foo
+ 
+ 
+         let foo = function foo2(){
+             console.log(14);
+             
+         }
+         console.log(foo.name); //foo2  这是一个很不规范的写法
+         */
+
+
+        //4.rest 参数 （剩余运算符）
+
+
+        //5. 'use strict' 开启严格模式
+
+
+        /* "use strict"
+        //（1）全局变量必须显式声明
+        // a = 10;
+        // console.log(a);  //a is not defined  必须要声明一下
+
+
+        //（2）禁止this关键字指向全局对象 构造函数必须new
+
+        function foo() {
+            console.log(this);   // undefined         
+        }
+        foo();
+ */
+        //let arr = new Array();
+
+
+        //构造继承
+        /* function Person() {
+            this.name = 'xiaoming',
+            this.age = 20
+            //this.showName = function() {  //这个方法可以继承内部属性,一般不用这个方法
+                //console.log(this.name);
+           // } 
+        }
+
+        // let person1 = new Person();
+        function Student() {
+            Person.call(this);  //利用.call改变this指向继承Person
+            this.school = 'gongda';
+        }
+        let student1 = new Student();
+        //console.log(student1.name);
+        student1.showName(); */
+
+
+        //原型继承
+        /*  function Person() {
+             this.name = 'xiaoming',
+             this.age = 20
+             
+         }
+         Person.prototype.showName = function() {
+             console.log(this.name);            
+         }
+         function Student() {
+             this.school = 'gongda';
+         }
+         Student.prototype = new Person();
+         let student1 = new Student();
+ 
+         console.log(student1.name);
+         
+         student1.showName(); //继承原型下方法
+     
+     
+     //组合继承
+         function Person() {
+             this.name = 'xiaoming',
+             this.age = 20
+             
+         }
+         Person.prototype.showName = function() {
+             console.log(this.name);            
+         }
+         function Student() {
+             Person.call(this);
+             this.school = 'gongda';
+         }
+         Student.prototype = new Person();
+         Student.prototype.constructor = Student; //修正构造函数
+         console.log(Student.prototype.constructor); */
+
+
+        /* 'use strict'
+        function Person() {
+            this.name = 'xiaoming';
+            console.log('123'); //报错  必须new
+        } 
+        Person();*/
+
+        /* 'use strict'
+        //（3）函数不能有同名参数 
+        function foo(a,a,b) {
+            console.log(a,b);//2 3 开启严格模式报错 不能使用同名参数
+        }
+        foo(1,2,3); */
+
+        //（4）禁止使用with语句
+        // let obj = {
+        //     name:'aa'
+        // }
+        // function foo() {
+        //     console.log(this.name);
+        // }
+        // foo.call(obj);
+
+
+        //(5)arguments.callee()
+        /* 'use strict'
+        function foo(num) {
+            if(num==1){
+                return 1
+            }else{
+               // return num* foo(num-1)
+               return num* arguments.callee(num-1);
+            }
+            
+        }
+        console.log(foo(10)); //3628800 使用use strict就会报错 */
+
+
+
+        //（6）函数内部开启严格模式
+        function foo() {
+            'use strict'
+        }
+
+        //ES6:规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错。
+        //比如我们这里使用默认值  会报错
+        function foo(name = 'aa'){
+            'use strict'
+        }
+
+    </script>
+</body>
+
+</html>

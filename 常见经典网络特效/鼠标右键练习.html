@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  * {margin: 0;padding: 0;} 作用是重置浏览器默认样式，可以删除浏览器的一些默认值，但是这种方法可能会降低效率
+           
+           */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu {
+            background: #eeeeee;
+            width: 100px;
+            display: none;
+            position: absolute; /* 定位 */ 
+        }
+
+        #menu>li {
+            font-size: 13px;
+            color: darkslategray;
+            line-height: 30px;
+            text-align: center;
+            list-style: none;  /* 取消li标签前面的小点 */
+            cursor: pointer;   /* 鼠标划入箭头变小手 */
+        }
+        /* 鼠标划入样式变化 */
+        #menu>li:hover {
+            color: #ffffff;
+            background-color: limegreen;
+        }
+
+        .line {
+            border-top: 1px solid #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li>设置</li>
+        <li>查看</li>
+        <li class="line">排序方式</li>
+        <li class="line">刷新</li>
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>打印</li>
+        <li class="line">删除</li>
+        <li>重命名</li>
+    </ul>
+
+    <script>
+        var oMenu = document.getElementById('menu');//获取menu
+        var aLi = oMenu.getElementsByTagName('li');//获取li
+        //oncontextmenu 鼠标点击右键时，打开默认右键菜单的触发事件
+        document.oncontextmenu = function (event) {
+            
+            oMenu.style.display = 'block';//显示我们写的menu元素
+
+            var top = event.clientY;  //定位鼠标右击纵向位置
+            var left = event.clientX;  //定位鼠标右击的横向位置
+
+            oMenu.style.top = top + 'px';
+            oMenu.style.left = left + 'px';
+
+            //我们在浏览器中右击会出现浏览器默认的菜单栏此处我们利用return false将默认的菜单栏取消
+            return false;
+        }
+        // 点击鼠标左键，将菜单隐藏
+        document.onclick = function () {
+            oMenu.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

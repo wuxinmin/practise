@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. new Object 方法
+        /* var cat = new Object();//构造函数
+        //cat 属性
+        cat.name = 'mimi';
+        cat.weight = 3;
+        cat.variety = '蓝猫';
+        //cat方法
+        cat.eat = function(){
+            console.log('mimi is eating...')
+        }
+        cat.catchMouse = function(){
+            console.log('mimi is catching mouse...')
+        } */
+
+        //2.直接量（推荐）
+        var cat = {
+            name: 'mimi',
+            weight: 3,
+            variety:'蓝猫',
+            eat:function(){
+                console.log('mimi is eating...')  
+            },
+            catchMouse :function(){
+                console.log('mimi is catching mouse...')
+            }
+        };
+        //访问name属性
+        console.log(cat.name);
+
+        //访问方法
+        cat.eat();
+
+        //有时属性name会改导致很多地方要改，解决办法
+        var cat = {
+            name: 'xiaohua',
+            weight: 3,
+            variety:'蓝猫',
+            eat:function(){
+                console.log(this.name + 'is eating...')  
+            },
+            catchMouse :function(){
+                console.log(this.name + 'is catching mouse...')
+            }
+        };
+
+
+    </script>
+</body>
+</html>

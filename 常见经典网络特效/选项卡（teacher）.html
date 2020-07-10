@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    #container{
+      width: 300px;
+      margin: 100px auto 0;
+    }
+
+    #menu{
+      width: 100%;
+      height: 40px;
+    }
+
+    #menu>li{
+      float: left;
+      width: 100px;
+      height: 100%;
+      text-align: center;
+      line-height: 40px;
+      list-style: none;
+      color: #ff8907;
+      background: #eee;
+      cursor: pointer;
+    }
+
+    #menu>.active{
+      color: #fff;
+      background: #ff8907;
+    }
+
+    #content > div {
+      display: none;
+      width: 100%;
+      height: 200px;
+      color: #fff;
+      background: #ffbe77;
+    }
+
+    #content > .selected {
+      display: block;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <ul id="menu">
+      <li class="active">HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+
+    <div id="content">
+      <div class="selected">HTML课程</div>
+      <div>CSS课程</div>
+      <div>JavaScript课程</div>
+    </div>
+
+  </div>
+
+  <script>
+    var oMenu = document.getElementById('menu')
+    var aLi = oMenu.getElementsByTagName('li') // 类数组
+
+    var oContent = document.getElementById('content')
+    var aDiv = oContent.getElementsByTagName('div')
+
+    for(var i = 0; i < aLi.length; i++) {
+      // 给每一个li加一个自定义的属性index
+      aLi[i].index = i
+
+      // 给每一个li绑定点击事件
+      aLi[i].onclick = function() {
+        // 给所有的li清楚class
+        for(var j = 0 ; j < aLi.length; j++) {
+          // class是关键字 class => className
+          aLi[j].className = ''
+
+          // 给所有div清楚样式
+          aDiv[j].className = ''
+        }
+
+        // 给当前点击项加class
+        // aLi[i].className = 'active'
+        this.className = 'active'
+        // 通过当前点击项（li）的索引 找到与之对应的div添加selected
+        aDiv[this.index].className = 'selected'
+      }
+    }
+
+
+
+  </script>
+</body>
+</html>

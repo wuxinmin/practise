@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000000;
+            perspective: 800px;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            /* background:#cccccc; */
+            /* 块元素水平居中 margin text 文本居中*/
+            margin:100px auto;
+            position: relative;
+            /* 3D效果 */
+            /* perspective: 800px; */
+            transform-style: preserve-3d;
+            -webkit-animation: run 2s linear infinite;
+        }
+        @keyframes run{
+            0%{
+
+            }
+            100%{
+                transform: rotateY(360deg);
+                }
+        }
+        #container div{
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 80px;
+            text-align: center;
+            line-height: 200px;
+        }
+        #one{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        #two{
+            transform: translateZ(100px);
+            /* 提高层级 */
+            z-index: 1;
+        }
+        #three{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        #four{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        #five{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        #six{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="one">1</div>
+        <div id="two">2</div>
+        <div id="three">3</div>
+        <div id="four">4</div>
+        <div id="five">5</div>
+        <!-- <div id="six">6</div>  -->
+    </div>
+
+
+
+
+</body>
+</html>

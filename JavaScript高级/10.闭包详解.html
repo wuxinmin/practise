@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        闭包：外部函数里定义内部函数 内部函数会调用外部函数的局部变量 外部函数的局部变量不会被释放
+        
+        内存的生命周期：
+         1.分配你所需要的内存
+         2.使用分配到内存（读/写）
+         3.不需要时将其释放/归还
+    -->
+
+     <script>
+         function fn1() {
+             var a = 10;
+             console.log(a);
+         }
+         fn1();
+        //  console.log(a);
+
+         //闭包  外部函数 
+         function fn2() {
+             var b = 20;//局部变量
+
+             //内部函数
+             function fn3() {
+                 b++;
+                 console.log(b);
+             }
+             fn3();
+         }
+
+         fn2();
+
+
+
+         function fun() {
+             var x = 10;
+             return function(){ //返回这个方法
+                 x++;
+                 console.log(x);
+             }
+         }
+        //  fun();  这里为什么直接调用fun是错的，此时fun返回值是一个方法。
+        var f = fun();//在这里调用了一次就只声明了一次x
+        f();//11  这里只单纯调用返回值
+        f();//12
+
+         //每次都重新执行fun方法  x会重新定义赋值
+        fun()();//11
+        fun()();//11
+
+
+         /* js是单线程的 
+            在执行for循环的时候定时器aetTimeout被安排在任务队列中等待执行
+            在等待过程中  for循环就已经在执行 执行结束后 i= 3 
+            等到setTimeout可以执行的时候 for循环已经结束，此时 i=3 */
+        for(var i=0; i<3; i++) {
+            //在执行js时，异步任务会放入任务队列
+            setTimeout(function() {
+                console.log(i); //3 3 3
+            }, 1000)     
+        }
+
+        //我们可以这样写
+        for(var i=0; i<3; i++) {
+            function f(index){
+            //在执行js时，异步任务会放入任务队列
+            setTimeout(function() {
+                console.log(index); //0 1 2
+            }, 1000)
+            }
+            f(i);
+        }
+
+
+        //通常利用函数立即调用
+        /* 这种相当于启动了三个定时器
+            三个定时器之间的实践间隔不一样
+            采用函数立即调用的方式构成一个闭包 这样就可以被存储到内存中 */
+        for(var i=0; i<3; i++){
+            (function(i){
+                setTimeout(function() {
+                console.log(i); //0 1 2
+            }, 1000 * i) //这里*i就可以显示效果 
+            })(i)//形参
+        }
+     </script>
+</body>
+</html>

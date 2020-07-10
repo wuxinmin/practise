@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div{
+            width: 200px;
+            height: 100px;
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- 输入框 value默认输入框 -->
+    <input type="text" id="ipt" >
+
+    <div id="div1"></div>
+
+    <script>
+        var ipt = document.getElementById('ipt');
+       /*  ipt.onkeydown = function(){
+            console.log(ipt.value);
+        }; */
+        ipt.onkeyup = function(){
+            console.log(ipt.value);
+        };
+        
+        var div1 = document.getElementById('div1');
+        div1.onmousedown = function(){
+            console.log('down');
+        };
+        div1.onmouseup = function(){
+            console.log('up');
+        };
+        div1.onmousemove = function(){
+            console.log('move');
+        };
+        div1.onmouseover = function(){
+            console.log('over');
+        };
+        div1.onmouseout = function(){
+            console.log('out');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* 引用公共 */
+@import 'common.scss';
+/* 利用$定义变量 */
+$color: #cccc;
+$a: 40;
+/* 混合宏  封装一个三角箭头 */
+body{
+    background: $color;
+    /* 嵌套 */
+    .header{
+        .header-logo{
+            width: abs(200.2px); /* 绝对值 */
+            height: 200px;
+        }
+        a{
+            color: green;
+            border: {
+                left: 2px solid #000;
+                right: 2px solid pink;
+            }
+            /* 利用&可以取到父元素 */
+            &:hover{
+                color: blue;
+            }
+        }
+    }
+    #div1{
+        @include arow('left',red,30px);
+    }
+    /* 继承 */
+    #div2{
+        
+        @extend #div1;
+    }
+}
+
+//当选择器或者属性名中使用变量的时候用 #{}
+@for $i from 1 to 5 {//to  就是1-4
+    .item#{$i}{
+        width: 100*$i;
+    }
+}
+@for $j from 1 through 5 {//through  就是1-5
+    .nav#{$j}{
+        width: 100*$j;
+    }
+}
+
+$list: success error warn;
+@each $x in $list {
+    .#{$x}{ //当选择器或者属性名中使用变量的时候用 #{}
+       width: 200px;
+       
+    }
+}
+$m:5;
+@while ($m > 0) {
+    .aa-#{$m}{
+        width: 100px*$m;
+    }
+    $m: $m - 1;
+}
+
+/* 函数 */
+@function add($x,$y){
+    @return $x + $y;
+}
+#div5{
+    width: add(100px, 400px);//调用
+    background: green;
+    height: 100px;
+}
+
+
+// div {
+//     color: $color;
+//     width: $a+'px';
+// }

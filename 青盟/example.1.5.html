@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包案例-打印Li的索引</title>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+    <script>
+        var oUl1 = document.getElementById('ul1');
+        var aLi = oUl1.getElementsByTagName('li');
+        for (var i = 0; i < aLi.length; i++) {
+            // aLi[i].index = i;
+            // aLi[i].onclick = function () {
+            //     alert(this.index);     
+            // };
+            (function(j){//型参
+                aLi[i].onclick = function (){
+                    alert(j);
+                };
+            })(i);//实参
+        }
+    </script>
+</body>
+
+</html>

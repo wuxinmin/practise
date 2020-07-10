@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            /* 过度 需要一个触发的条件*/
+            /* transition: width 2s ease 1s ; */
+       
+        /* div:hover{
+            width: 800px;
+        } */
+        /* run2s 延迟2s   3次   forwards保持变化后 */
+        animation: run 2s ease 2s 3  forwards; 
+        }
+        @keyframes run{
+              0%{ }
+              30%{
+                  width: 500px;
+              }
+              70%{
+                  width: 300px;
+              }
+              100%{
+                  width: 800px;
+              }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

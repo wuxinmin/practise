@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* //es6内部 === 严格等于undefined
+        let [x=1] = [undefined];
+        console.log(x); //1
+
+        let [y=1] = [null];
+        console.log(y); //null
+
+
+        // let {a:c} = {}        
+        // console.log(a); */
+
+
+        // let arr = [1,3,1,4]
+        // //这里加箭头函数直接返回
+        // const fn = ()=>`我和你${arr.map(v=>`${v}`)}`//map接收一个回调函数
+        // console.log(fn());
+
+        // console.log(...[1,2,3]);
+
+        // let arr = [1,2,3];
+        // let arr2 = [3,4];
+        // console.log(arr.concat(arr2));
+        // let arr3 = [...arr,...arr2]  //利用扩展运算符
+        // console.log(arr3);
+
+        // arr.push(...arr2);
+        // console.log(arr);
+
+        // 也可以用apply  
+        // Array.prototype.push.apply(arr,arr2);
+        // console.log('arr:',arr);  //输出[1,2,3,4]
+        // let arr = [1, 2, 3];
+        // let obj = { name: 'zhangsan' }
+
+        // /* let res = arr instanceof Array
+        // console.log(res);//true 证明是数组类型 */
+        // let res = obj instanceof Object
+        // console.log(res);//true 证明是对象类型
+
+
+        // var toString = Object.prototype.toString;
+
+        // toString.call(new Date); // [object Date]
+        // toString.call(new String); // [object String]
+        // toString.call(Math); // [object Math]
+
+        // toString.call(undefined); // [object Undefined]
+        // toString.call(null); // [object Null]
+
+        //类数组对象转化成数组  必须要有length属性
+        // let obj = {
+        //     0:'a',
+        //     1:'b',
+        //     2:'c',
+        //     length:3
+        // }
+        // let res =Array.from(obj) //转化
+        // console.log(res); //数组abc["a", "b", "c"]
+        // console.log([...res]);
+        
+
+        //keys values entries   for of
+        // let set = new Set(['red','green','blue'])
+        // console.log(set.keys());
+        // for(let i of set.keys()){
+        //     console.log(i);//red green blue           
+        // }
+        // for(let t of set.values()){
+        //     console.log(t);//red green blue           
+        // }
+        // //for of 遍历下keys 和values值相等
+        // for(let e of set.entries()){
+        //     console.log(e);//两个都输出          
+        // }
+
+
+        // //并集 交集
+        // let a = new Set([1,2,3]);
+        // let b = new Set([4,3,2]);
+        // //并集 
+        // let unique = new Set([...a,...b]);
+        // console.log(unique);
+        // //交及 has
+        // let inter = new Set([...a].filter(x=>b.has(x))) //filter() 过滤
+        // console.log(inter);;
+        // //差集
+        // let dif = new Set([...a].filter(x=>!b.has(x))) //filter() 过滤
+        // console.log(dif);
+        
+
+        //map
+        let o1 = {a:1}
+        let o2 = {b:1}
+
+        let o3 = {}
+        o3[o1] = 1
+        o3[o2] = 2
+        console.log(o3);
+        
+
+        
+    </script>
+</body>
+
+</html>

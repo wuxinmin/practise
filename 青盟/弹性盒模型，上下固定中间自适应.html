@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            display: -webkit-flex;
+            flex-direction: column;
+        }
+
+        #top {
+            height: 50px;
+            background: red;
+        }
+
+        #bottom {
+            height: 50px;
+            background: blue;
+        }
+
+        #center {
+            background: cyan;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+    <div id="center"></div>
+    <div id="bottom"></div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 100px;
+            background: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <button id="btn">点我</button>
+    <!-- 像写入h1标签里的这种属性是一类dom属性，还有一类 是内存属性  -->
+    <h1 id="h1">This is title</h1>
+
+    <script>
+        /*  var div1 = document.getElementById('div1');
+          div1.onclick = function(){
+              div1.style.background = '#f00';
+          } */
+        var btn = document.getElementById('btn');
+        var h1 = document.getElementById('h1');
+        var div2 = document.getElementById('div2');
+        btn.onclick = function () {
+            //(1)innerHTML可以改内部的内容，(2)也可以赋值
+            /* (1)
+             h1.innerHTML = 'haha'; */
+            //(2)
+            // console.log(h1.innerHTML);
+            //h1.cc = 'dd';//添加属性，内存属性
+            //h1.setAttribute('aa','cc');//修改aa属性为cc
+            //console.log(h1.getAttribute('aa'));//获取aa
+
+
+            //创建HTML元素,在当前文档创建p元素
+            var p1 = document.createElement('p');
+            //添加内容
+            p1.innerHTML = '这是一个p';
+            //将p元素插入  .body是指获取body下的元素  document比标签高一级，他是文档，不能在文档中直接添加，也不一定只能是body也可以是div标签
+            // document.body.appendChild(p1);
+            div2.appendChild(p1);
+            //删除
+            div2.removeChild(p1);
+        };
+
+    </script>
+</body>
+
+</html>

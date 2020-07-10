@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol type="1" reversed="reversed">   <!-- 排序只有 1 a A i I  resversed倒叙 -->
+        <li>marvel</li>
+        <li>速8</li>
+        <li>返老还童</li>
+    </ol>
+    <ol type="a" start="3">   <!-- start从几开始排 -->
+        <li>苹果</li>
+        <li>橘子</li>
+        <li>余生</li>
+    </ol>
+    
+
+    <!-- ol基本不用 大多用ul -->
+    <ul type="">           <!-- disc实心圆  square方形点 square圈-->
+        <li>前任</li>
+        <li>往事</li>
+        <li>回忆</li>
+        <li>痛苦</li>
+        <li>蓉儿</li>
+    </ul>
+
+    <!-- img标签 -->
+    <img src="" alt="" title="">
+    <!-- 
+        scr：
+        1.网上url
+        2.本地的绝对路径
+        3.本地的相对路径
+        alt 图片占位符
+        title 图片提示符
+     -->
+
+     <!-- a标签：1.超链接 2.锚点 3.打电话 4.协议限定符-->
+     <a href="http://www.baidu.com" target="_blank">
+        <img src="" alt=""><!-- 可以是图片文字。。 -->
+    </a>
+    <!-- target在新标签页打开 -->
+
+
+    <!-- 3.打电话 发邮件 -->
+    <a href="tel:13830027365"> 打电话</a>
+
+    <!-- 4.协议限定符 -->
+    <a href="javascript:while(1){alert('让你手欠')}">你点呀！！</a>
+
+    <hr>
+
+
+    <!--！！ form 标签  表单  发送数据-->
+    <form  method="get" action="">
+
+        <!-- p标签用来换行 -->
+        <p>
+            用户名：<input type="text" name="username" style="color:#999" value="请输入姓名"
+        onfocus="if(this.value=='请输入姓名'){this.value='';this.style.color='#000'} " onblur="if(this.value==''){this.value='请输入姓名';this.style.color='#999'}">
+        </p>
+        <p>
+            密码：<input type="password" name="password" placeholder="请输入密码"
+            onfocus="this.placeholder=''"onblur="this.value='请输入密码'">
+        </p>
+        <!-- submit默认是提交（发送） -->
+        <input type="submit" value="登录">
+        <!-- 
+            没有name 就不会有 ？ 后面的东西
+            file:///E:/practise/HTML/HTML2.html?username=1111&password=88888888
+         -->
+         <hr>
+         <!-- 单选框 -->
+         你喜欢的男星:
+         1.成龙<input type="radio" name="star" value="xiaolong">
+         2.周星驰<input type="radio" name="star" value="axing"> <!-- 把他们的name统一就有选择性了 -->
+         <input type="submit">  提交
+
+        <hr>
+
+         <!-- 复选框 -->
+         1.苹果<input type="checkbox" name="fruit" value="apple">
+         2.橘子<input type="checkbox" name="fruit" value="orange">
+         3.香蕉<input type="checkbox" name="fruit" value="banana">
+         <input type="submit">  <!-- 提交 -->
+
+
+    </form>
+</body>
+</html>

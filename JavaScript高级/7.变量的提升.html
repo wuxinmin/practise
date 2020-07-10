@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- var关键字定义变量会出现变量提升问题 -->
+    <script>
+       /*  console.log(a);  //undefined
+        var a = 123; */
+        //变量提升的效果
+        var a;
+        console.log(a);
+        a = 123;
+
+
+        /* fun1();//输出 hello */
+        function fun1(){
+            console.log(hello);
+        }
+        /* fun1();//输出 hello */
+        fun2();//fun2 is not a function
+        var fun2 = function(){
+            console.log('world');
+        }
+        /* fun2(); //输出 world */
+         
+
+        var x = 1;
+        function fun3() {
+            console.log(x);  //undefined
+            var x = 2;
+        }
+        fun3();
+
+        //就是
+        var x = 1;
+        function fun3(){
+            var x;
+            console.log(x);
+            x = 2;
+            
+        }
+        fun3();
+
+
+        var x = 1;
+        function fun4(){
+            
+            console.log(x);//输出 1
+            x = 2;
+            
+        }
+        fun4();
+    </script>
+</body>
+</html>

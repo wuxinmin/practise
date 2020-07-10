@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1 button{ 
+                width: 100px;
+                height: 30px; background-color: gray; font-size: 18px; color: white}
+
+			#div1 .active{background-color: orange}
+			#div1 div{
+				width: 400px; 
+                height: 400px; 
+                border: 1px solid black; 
+                background-color: gray; 
+                display: none
+			}
+		</style>
+
+	</head>
+	<body>
+		<div id = 'div1'>
+			<button class = 'active'>钢铁侠</button>
+			<button>蜘蛛侠</button>
+			<button>绿灯侠</button>
+			<div style = 'display: block'>《钢铁侠》（Iron Man）是由美国漫威电影工作室出品的一部科幻冒险电影，改编自同名系列漫画，由乔恩·费儒执导，小罗伯特·唐尼及格温妮斯·帕特洛、杰夫·布里吉斯等主演。该作也是“漫威电影宇宙”系列的首部电影。该片于2008年5月2日在美国上映。影片讲述了托尼·斯塔克在遇难后改进了盔甲的功能，化身“钢铁侠”，以一个义务警察的身份保护了这个世界和平的故事。</div>
+			<div>蜘蛛侠（Spider-Man）是美国漫威漫画旗下超级英雄，由编剧斯坦·李和画家史蒂夫·迪特科联合创造，初次登场于《惊奇幻想》（Amazing Fantasy）第15期（1962年8月），因为广受欢迎，几个月后，便开始拥有以自己为主角的单行本漫画。他本名彼得·本杰明·帕克（Peter Benjamin Parker），是住在美国纽约皇后区的一名普通高中生，由于被一只受过放射性感染的蜘蛛咬伤，因此获得了蜘蛛一样的超能力，后自制了蛛网发射器，化身蜘蛛侠（Spider-Man）守卫城市。</div>
+			<div>影片改编自DC漫画公司漫画，由马丁·坎贝尔执导，迈克尔·戈登伯格和迈克尔·格林担任编剧，瑞安·雷诺兹、布蕾克·莱弗利、彼得·萨斯加德和马克·斯特朗联袂出演，影片于2011年6月17日在美国上映。影片讲述宇宙间有一群维护宇宙治安的“绿灯军团”，每个成员都配备了一枚神奇的戒指，可以随心所欲的变出各种东西或实现任何目的。哈尔·乔丹原本是一名试飞员，后来被绿灯侠的戒指召唤成为“绿灯侠”，负责保卫地球和银河</div>
+        </div>
+        
+        <script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var aBtns = oDiv1.getElementsByTagName("button");
+				var aDivs = oDiv1.getElementsByTagName("div");
+
+
+				//1、给每一个按钮添加点击事件
+				for(var i = 0; i < aBtns.length; i++){
+					aBtns[i].index = i;
+					aBtns[i].onclick = function(){
+
+						//2、先将所有按钮的样式取消
+						for(var j = 0; j < aBtns.length; j++){
+							aBtns[j].className = '';
+							aDivs[j].style.display = "none";
+						}
+
+						this.className = 'active';
+						//3、找到按钮对应下标的div，显示出来
+						aDivs[this.index].style.display = 'block';
+					}
+				}
+
+			}
+
+		</script>
+	</body>
+</html>

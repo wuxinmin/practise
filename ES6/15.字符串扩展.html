@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+
+
+    </div>
+    <script>
+
+        /* var oDiv = document.getElementById('div1');
+        oDiv.innerHTML = "<p class = 'active'> hello </p>" +    //注意双引号套单引号
+            "<span>world</span>"
+        */
+
+
+        //1.模反字符串
+        // var oDiv = document.getElementById('div1');
+        // oDiv.innerHTML = `<p class = 'active'> hello </p>
+        //           <span>world</span>`  //换行还是可以识别
+
+
+      /*   var oDiv = document.getElementById('div1');
+        let str = 'hello';
+        let a = 12;
+        let b = 10;
+        // oDiv.innerHTML = "<p class = 'active'>"+str+"</p>"
+        oDiv.innerHTML = `<p class = 'active'> ${str} </p>
+        <span>${a+b}</span>`//${} 可以加东西，还可以简单运算 */
+
+
+
+        //2.   includes() 与 indexOf
+        /* let str = 'hello world';
+        console.log(str.indexOf('e')); //输出1，从0开始第一个字符
+        console.log(str.indexOf('ee')); //输出-1
+
+        //判断有没有指定的字符串
+        console.log(str.includes('e')); //输出true
+        console.log(str.includes('ee')); //输出false */
+        
+
+        //3.startsWith() 与endsWith()  是否以。。。开头，结尾
+      /*   let str = 'hello world';  //let不能多次声明
+        console.log(str.startsWith('hello')); //true
+        console.log(str.endsWith('ld')); //true
+      */
+
+        //用indexOf封装startsWith
+        /* let str = 'hello world';
+        function foo (str,str2){
+            if(str.indexOf(str2)==1){
+                return true
+            }
+            return false;
+        }
+
+        console.log(foo(str,'hello')); */
+
+
+
+         /* 使用 str. 时实际上是用 String下的方法 */
+        /* let str = new String();
+        console.log(str);
+
+        console.log(String.prototype); */
+        
+        /* let str = 'hello world';
+        String.prototype.sw = function() {
+            if(this.indexOf(str)==0){
+                return true
+            }
+            return false;
+        }
+        console.log(str.sw('hello'));  //true */
+        
+       
+    //4.padStart() 与 padEnd
+        /* let str = 'hello';
+        console.log(str.padStart(10,'ab'));  //ababahello  在当前字符串前加入  长度-5 个字符补齐
+        console.log(str.padEnd(10,'ab'));  //helloababa    在当前字符串后加入  长度-5 个字符补齐 */
+    
+
+    //5.repeat
+        let str = 'hello';
+        console.log(str.repeat(2));  //hellohello
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹性盒模型</title>
+    <style>
+        .parent{
+            width: 500px;
+            height: 500px;
+            background: #cccccc;
+            /*  父元素*/
+            display: -webkit-flex;
+            /* flex-direction 默认值是row 水平 */
+            /* flex-direction: row-reverse; */
+            flex-direction:column-reverse;
+        }
+        .child1{
+            height: 100px;
+            background: #ff0000;
+            /* 给第一个孩子分一份，而且分配的是父元素的剩余空间 */
+            /* flex-grow: 1; */
+        }
+        .child2{
+            /* height: 100px; */
+            background: #9900f0;
+            /* 给第二个孩子分两份 */
+            flex-grow: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child1"></div>
+        <div class="child2"></div>
+    </div>
+</body>
+</html>

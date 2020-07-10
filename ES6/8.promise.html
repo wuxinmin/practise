@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        promise 异步编程解决方案 
+        resolve 成功的回调
+        reject  失败的回调
+
+        promise.then 是promise实例状态改变时的回调函数 返回一个新的promise对象
+        promise.catch 处理前一个回调函数运行时发生的错误
+    -->
+
+    <script>
+        /* let p1 = new Promise(function(resolve,reject) {
+
+            console.log('开始发送请求1');
+            setTimeout(() => {
+                let tag = false;
+                if(tag){
+                    resolve();
+                } else {
+                    reject();
+                }
+            },1500)
+        }).then(() => {
+            console.log('请求1成功');
+        }).catch(() => {
+            console.log('请求1失败');
+        }) */
+
+        let p2 = new Promise((resolve,reject) => {
+            console.log('开始发送请求1');
+
+            setTimeout(() => {
+                let tmp = true;
+                if(tmp) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            },1500)
+        }).then(() => {
+            console.log('请求1成功');
+        }, () => {
+            console.log('请求1失败');
+        })
+
+        //相当于 p2.then(f1,f2) then 方法支持两个参数 都是函数 第一个函数f1表示成功回调 第二个函数f2表示失败的回调
+    </script>
+</body>
+</html>

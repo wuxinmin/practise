@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        在不刷新整个页面的情况下、更新部分数据
+        异步加载数据
+    -->
+
+    <script>
+        //！！ajax原理（重要）
+        //1、创建XMLHttpResquest对象
+        var xmlhttp;
+        //兼容不同浏览器
+        if (window.XMLHttpRequest) {
+            //code for IE7+,Firefox,chrome,Opear,safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            //code for IE6,IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+
+        /* open 第一个参数 请求类型 GET POST （提交信息用POST 获取信息用GET）
+                第二个参数 请求地址
+                第三个参数 是否异步操作 true：异步 false：同步
+         */
+        //2、向服务器发送请求（接口） 
+        //open 规定请求的类型、URL 以及是否异步处理请求。
+        xmlhttp.open("GET", "Date.json", true);
+
+        xmlhttp.send(); //将请求发送到服务器
+
+
+        //3.响应
+        /* 
+            0：请求未初始化
+            1：服务器连接已建立
+            2：请求已接收
+            3：请求处理中
+            4：请求已完成，且响应已就绪
+
+         */
+        //onreadystatechange 存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+        xmlhttp.onreadystatechange = function () {
+            //当readyStare等于4切换为200时表示响应已就绪
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                //返回值时json（字符串类型）json是用于前后数据交互的一种类型
+                console.log(xmlhttp.responseText);
+                // 转换成对象类型的数据 便于后续使用
+                let res = JSON.parse(xmlhttp.responseText)
+                console.log(res)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

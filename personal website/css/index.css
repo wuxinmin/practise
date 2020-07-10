@@ -1,0 +1,264 @@
+html{
+    /* 滚动框行为 auto 默认 smooth 滑动*/
+    scroll-behavior: smooth;
+}
+#nav{
+    width: 500px;
+    /* 背景 图片 是否重复 位置 尺寸 */
+    background: url('../images/background.jpg') no-repeat center / cover;
+    /* 固定样式 */
+    /* 背景图片尺寸： cover 充满  contain一个方向充满 ：background-size:cover;*/
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+}
+#nav-info{
+    padding: 32px;
+    text-align: right;
+    color: rgb(0, 0, 0);
+}
+#nav-info img{
+    width: 100px;
+    /* 这里如果设置高 height 就会按设置的缩放图片很可能变形 */
+    /* 设置圆形 */
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255, 0.4);
+    /* rgba css3属性 半透明效果*/
+}
+#nav-info h1{
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+#nav-info h2{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+#nav-info i{
+    margin-right: 5px;
+}
+.nav-menu{
+    padding: 0 48px;
+    text-align: right;
+}
+.nav-menu-list{
+    margin-bottom: 16px;
+}
+.nav-menu-list a{
+    /* 文字加粗 */
+    font-weight: bold;
+    color:#fff;
+}
+/* 鼠标划入文字变色 */
+.nav-menu-list a:hover{
+    color: #00a8e0;
+
+}
+
+/* main */
+#main{
+    margin-left: 500px;
+}
+.main-title{
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: #787878;
+}
+.main-title i{
+    font-size: 24px;
+}
+
+/* home块 */
+#home{
+    padding: 60px 48px;
+    text-align: center;
+}
+#home-title{
+    text-align: left;
+}
+
+/* about块 */
+#about{
+    padding: 64px; 
+     /*边框*/
+    border-top: 2px solid #fff;
+}
+#about p{
+    font-size: 18px;
+    color: #999;
+}
+
+/* skill块 */
+#skill{
+    padding: 64px;
+    background: #f0f4f4;
+}
+.skill-list{
+    margin-bottom: 15px;
+    color:#999;
+    list-style: square;
+}
+
+/* project */
+#project{
+    padding: 64px;
+    /* 解绝塌陷问题 */
+    overflow: hidden;
+}
+.project-wrapper{
+    overflow: hidden;
+}
+.project-list{
+    float: left;
+    display: flex;
+    width: 50%;
+    margin-bottom: 40px;
+}
+.project-list-icon{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    /* 垂直居中 */
+    line-height: 100px;
+    border: 2px solid #ccc;
+    color: #00a8e0;
+}
+.project-list-icon i{
+    font-size: 26px;
+}
+.project-list-icon:hover{
+    border-radius: 50%;
+    color: #dc3545;
+    /* 过渡 */
+    transition: all 0.5s ease;
+}
+.project-list-info{
+    flex: 1;
+    padding: 0 10px;
+}
+.project-list-title{
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #3d4449;
+}
+.project-list-title a{
+    color: #3d4449;
+}
+.project-list-details{
+font-size: 14px;
+color: #777;
+}
+/* article */
+#article{
+    padding: 64px;
+    border-top: 2px solid #efefef;
+}
+.article-list{
+    margin-bottom: 15px;
+    color:#999;
+    list-style: square; 
+}
+.article-list a{
+    color:#999;
+}
+.article-list a:hover{
+    text-decoration: underline;
+    color: #00a8e0;
+}
+/* picture */
+#picture{
+    padding: 64px;
+    background: #f0f4f4;
+    overflow: hidden;
+}
+.picture-list{
+    float: left;
+    width: 46%;
+    margin:0 2% 48px;
+}
+.picture-list img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* contact */
+#contact{
+    padding: 64px;
+}
+#contact-wrapper input{
+    width: 200px;
+    height: 25px;
+    padding: 15px;
+    border-radius: 4px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+#contact-message{
+    width: 430px;
+    height: 25px;
+    padding: 25px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#contact-button{
+    width: 100px;
+    height: 54px;
+    margin-top: 20px;
+    line-height: 54px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
+    color: #fff;
+    background: #00a8e0;
+}
+#contact-button:hover{
+   background: #dc3545;
+}
+/* cover块 */
+#cover{
+    display: none;  
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#cover-container{
+    width: 480px;
+    padding: 48px 16px;
+    border-radius: 5px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* css3变换 */
+    transform: translate(-50%,-50%);
+}
+#cover-close{
+    font-size: 20px;
+    color: #999;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+#cover-close:hover{
+    color:#3d4449;
+}
+#cover-container img{
+    width: 100%;
+}
+#cover-details{
+    margin: 24px 0;
+    font-size: 14px;
+    color: #666;
+}
+#cover-link{
+    font-size: 14px;
+    color:#00a8e0;
+}
+#cover-link:hover{
+    color: #dc3545;
+    text-decoration: underline;
+}

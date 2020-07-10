@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 类名首字母大写
+    function Person(name,age){
+        // this指向实例化对象p1..
+        this.name = name;
+        this.age = age;
+        
+        //方法,如果在构造函数里面调用方法的话，那么每次创建实例化对象的时候都会产生一个新的方法
+        // this.eating = function(){
+        //     console.log(this.name +' is eating...')
+        // }
+    }
+    //方法下有一个属性prototype属性，这个属性叫做原型
+    //原型下有一个属性constructor属性值是当前这个函数
+
+    //原型下的属性和方法会被所有的实例化对象共享
+    Person.prototype.eating = function(){
+        console.log(this.name + ' is eating...');
+    }
+    Person.prototype.id = function(){
+        console.log(this.name +' is ...')
+    }
+    //p1就是实例化对象
+    var p1 = new Person('zs',18);
+    var p2 = new Person('xm',20);
+    console.log(p1);
+    p1.eating();
+    p1.id();
+    console.log(p2);
+    p2.eating();
+
+
+
+    /* 
+    类：具有相同属性和方法的集合叫做类
+    定义类：通过function来模拟类
+    规则：类名首字母大写 属性定义在类里面  方法写在原型下
+     */
+</script>
+</html>

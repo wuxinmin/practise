@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        同步  异步
+        js是单线程：处理的任务有多个，同一时间只能处理一个任务，一个任务处理完之后在处理下一个任务
+     -->
+</body>
+<script>
+    console.log(1);
+    setTimeout(function(){ //异步操作
+        console.log(2);
+    },1000)
+    console.log(3); //结果：1 3 2
+
+
+    console.log(1);
+    setTimeout(function(){ //异步操作
+        console.log(2);
+    },0)
+    console.log(3);
+    //将定时器时间改成0，结果仍然是：1 3 2
+
+
+
+    setTimeout(function(){
+        console.log();
+    },1000)  //此时定时器不一定等待1秒，可能就是5秒了
+    sleep();
+    function sleep() {
+        // ...这个方法需要5秒
+    }
+</script>
+</html>

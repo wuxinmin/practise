@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>利用定时器来解决for循环不能及时反映的问题</title>
+</head>
+
+<body>
+    <script>//利用定时器来解决for循环不能及时反映的问题
+        for (var i = 0; j < 3; i++) {
+            setTimeout(function () {//定时器
+                console.log(i);
+            }, 100);
+        }//输出3次3~   若将var 改为let（块es6）会输出 0 1 2
+        
+        //函数立即调用  or 即时函数
+        (function (j) {//j为型参
+            setTimeout(function () {//定时器
+                console.log(j);
+            }, 100);
+        })(i);//i为实参
+    </script>
+</body>
+
+</html>

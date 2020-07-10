@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div-1{
+        width: 202px;
+        height: 202px;
+        background: yellow;
+        perspective: 800px;
+    }
+    #div0 {
+        width: 200px;
+        height: 200px;
+        border: 1px dashed #000;
+        transform: rotateY(30deg);
+        /* 3D效果 */
+        /* perspective: 800px; */
+        /* 维持3D效果 */
+        transform-style: preserve-3d;
+    }
+
+    #div1 {
+        width: 200px;
+        height: 200px;
+        background: #ff0000;
+        transform: rotateY(45deg);
+    }
+</style>
+
+<body>
+    <div id="div-1">
+        <div id="div0">
+            <div id="div1"></div>
+        </div>
+    </div>
+</body>
+
+</html>

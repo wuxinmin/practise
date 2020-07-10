@@ -1,0 +1,305 @@
+/* 公用样式 */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font: 14px "HanHei SC","PingFang SC","Avenir Next",Avenir,"Helvetica Neue",Helvetica,"Lantinghei SC","Hiragino Sans GB","Microsoft YaHei",微软雅黑,STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+/* 去掉列表前的小点 */
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.topbar{
+    height: 40px;
+    background-color: #333;
+    font-size: 12px;
+    color: #fff;
+    /* 单行文字 垂直 居中 */
+    line-height: 40px;
+}
+/*公共居中class */
+.wrapper{
+    /* height: 40px;
+    background: yellow; */
+    width: 1200px;
+    /* 块级元素水平居中方式  auto自适应*/
+    margin: 0 auto;
+}
+/* 行元素、文字在父元素中 垂直 居中方式 */
+.topbar-list{
+    /* 浮动，把挤下去的-info浮动上来 */
+    float: left;
+}
+/* 将a标签默认的蓝色改为白色 */
+.topbar a{
+    color: #fff;
+    /* 去掉a标签默认的下划线 */
+    text-decoration: none;
+}
+/* 鼠标划入颜色 */
+.topbar a:hover{
+    color: #ddd;
+}
+/* 给“|” 两边加宽度*/
+.topbar-list span{
+    margin: 0 2px;
+}
+.topbar-info{
+    float: right;
+}
+/* header开始 */
+.header{
+    height: 100px;
+    /* background: #ff0000; */
+}
+.logo{
+    float: left;
+    margin-top: 23px;
+}
+.logo img{
+    width: 187px;
+    height: 55px;
+}
+.nav{
+    float: right;
+    margin: 36px -23px 0 0;
+}
+/* 亲子代选择器 */
+.nav > li{
+    float: left;
+    padding: 0 23px;
+    height: 40px;
+}
+.nav > li .nav-list{
+    color: #212121;
+    font-size: 18px;
+}
+.nav > li .nav-list:hover{
+    color: #e94400;
+}
+.nav-sub-list{
+    /* 定位 */
+    position: absolute;
+    top: 40px;
+    left: -31px;
+    background: #fff;
+    width: 150px;
+    height: 102px;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+}
+.nav-money{
+    position: relative;
+}
+/* 当鼠标划入时出现 */
+.nav-money:hover .nav-sub-list{
+    display: block;
+}
+/* 理财下的小提示一开始没有 */
+.nav-sub-list{
+    display: none;
+}
+.nav-sub-list ul{
+    padding: 10px 0;
+}
+.nav-sub-list li{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+.nav-sub-list li a{
+    color: #434343;
+}
+.nav-sub-list li:hover{
+    background: #eee;
+}
+.nav-sub-list li:hover a{
+    color: #e94400;
+}
+/* 加入一个父元素  此处加边框的小尖尖 */
+.nav-sub-list::before{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    left: 72px;
+    top: -5px;
+    border: 1px solid #e5e5e5;
+    /* transform css3 变形*/
+    transform: rotate(45deg);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    background: #fff;
+}
+/* header结束 */
+
+/* 大背景banner */
+.banner{
+    height: 640px;
+    /* center 背景图片居中 垂直0px */
+    background: url(image/index_banner-744e8a4eb7.jpg) center 0;
+}
+.banner h2{
+    color: #FFF;
+    font-size: 54px;
+    font-weight: 300;
+    text-align: center;
+    padding-top: 193px;
+}
+.download-btn{
+    text-align: center;
+    margin-top: 36px;
+}
+.download-btn a{
+    color: #FFF;
+    font-size: 24px;
+    background: #f93f2b;
+    width: 260px;
+    height: 60px;
+    /* 文字垂直居中 */
+    line-height: 60px;
+    /* a标签可多个元素占一行都是不能设置宽高，故设为行级块元素就可以设置宽高 */
+    display: inline-block;
+    /* 边框圆角 */
+    border-radius: 5px;
+}
+
+/* 主内容区concent */
+.concent{
+    width: 1170px;
+    /* height: 392px; */
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    margin-top: -80px;
+    padding: 30px 0 0 30px;
+    /* 解决浮动塌陷 */
+    overflow: hidden;
+}
+.list{
+    width: 360px;
+    background: #fff; 
+    float: left;
+    margin-right: 30px;
+}
+.list-img{
+    height: 180px;
+    background: url(image/bg1.png) 0 0 no-repeat;
+    /* css3新增 设置背景图片大小*/
+    background-size: 360px 180px;
+    overflow: hidden;
+}
+.list-blue .list-img{
+    background-image: url(image/bg2.png);
+}
+.list-green .list-img{
+    background-image: url(image/bg3.png);
+}
+.list-title{
+    color: #fff;
+    font-size: 33px;
+    font-weight: 400;
+    margin: 44px 0 0 30px;
+}
+.list-desc{
+    color: #fff;
+    font-size: 33px;
+    margin: 16px 0 0 30px;
+}
+.list-info{
+    padding: 10px 30px;
+    color: #666;
+    font-size: 16px;
+}
+.list-info span{
+    color: #ea5600;
+}
+.list-blue .list-info span{
+    color: #4481c8;
+}
+.list-green .list-info span{
+    color: #0DB27B ;
+}
+.list-info div{
+    margin-top: 20px;
+}
+/* 涉及优先级问题 */
+.list-info div.list-more{
+    border-top: 1px solid #ececec;
+    font-size: 16px;
+    color: #fd3911;
+    text-align: center;
+    margin: 40px 0 0 10px;
+    height: 62px;
+    line-height: 62px;
+}
+
+/* footer */
+.footer{
+    height: 209px;
+    /* background: #eeeeee; */
+}
+.footer-left-logo{
+    width: 46px;
+    height: 46px;
+    float: left;
+    margin-right: 8px;
+}
+
+.footer-left-message{
+    float: left;
+}
+.footer-left-message li{
+    float: left;
+    border-right: 1px solid #575757;
+    padding: 0 8px;
+}
+/* 利用css3新增选择器去掉“新浪微博”后的“|” */
+.footer-left-message li:last-child{
+    border-right:none;
+}
+.footer-left-message li a{
+    color: #575757;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    /* a 标签时行元素 */
+    display: block;
+}
+.about{
+    /* 解决塌陷 */
+    overflow: hidden;
+    padding:3px 0 10px ;
+}
+.contact li{
+    font-size: 12px;
+    color: #606060;
+    height: 14px;
+    line-height: 14px;
+}
+.footer-right-title{
+    color: #575757;
+    font-size: 14px;
+}
+.footer-right-tel{
+    color: #e84519;
+    font-size: 26px;
+}
+.footer-right-time{
+    color: #575757;
+    font-size: 12px;
+}
+.footer-left{
+    /* 解决塌陷 */
+    overflow: hidden;
+    float: left;
+    margin-top: 109px;
+}
+.footer-right{
+    float: right;
+    margin-top: 90px;
+}

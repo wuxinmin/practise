@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>奥运5环</title>
+
+    <style>
+        #container div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #000;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        /* 选中container下div中的第一个孩子*/
+        #container div:nth-child(1) {
+            border-color: blue;
+            left: 0;
+            top: 0;
+        }
+
+        #container div:nth-child(2) {
+            border-color: black;
+            left: 230px;
+            top: 0;
+
+        }
+
+        #container div:nth-child(3) {
+            border-color: red;
+            left: 460px;
+            top: 0;
+        }
+
+        #container div:nth-child(4) {
+            border-color: yellow;
+            left: 110px;
+            top: 110px;
+        }
+
+        #container div:nth-child(5) {
+            border-color: green;
+            left: 340px;
+            top: 110px;
+        }
+
+        #container div::after {
+            content: '';
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            /* 定位 */
+            position: absolute;
+            left: -10px;
+            top: -10px;
+        }
+
+        /* 给第一个div加上伪元素 */
+        #container div:nth-child(1)::after {
+            border: 10px solid blue;
+            z-index: 1;
+            /* 让下边框透明 */
+            border-bottom-color: transparent;
+        }
+
+        #container div:nth-child(2)::after {
+            border: 10px solid black;
+            z-index: 1;
+            /* 让下边框透明 */
+            border-left-color: transparent;
+        }
+        #container div:nth-child(3)::after {
+            border: 10px solid red;
+            z-index: 1;
+            /* 让下边框透明 */
+            border-left-color: transparent;
+        }
+        #container div:nth-child(5)::after {
+            border: 10px solid green;
+            z-index: 1;
+            /* 让下边框透明 */
+            border-right-color: transparent;
+            border-top-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

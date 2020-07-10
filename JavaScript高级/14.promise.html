@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+          new Promise(function(resolve,reject){
+            setTimeout(function() {
+                console.log(1);
+                var tag = false;
+                if (tag) {
+                    resolve();
+                }else{
+                    reject();
+                }
+            },1000)
+          }).then(function() {
+              console.log(2);//resolve执行then
+          }).catch(function(){
+              console.log('失败'); //reject执行catch
+          }).finally(function(){
+              console.log('finally'); //所有执行完之后执行finally
+          })
+     </script>
+</body>
+</html>

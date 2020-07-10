@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent {
+            width: 500px;
+            height: 500px;
+            background: red;
+            display: -webkit-flex;
+            /* 父元素决定垂直居中 */
+            align-items: center;
+            /* 水平居中 */
+            justify-content: center;
+        }
+
+        #child {
+            width: 200px;
+            height: 200px;
+            background: #cccc;
+            /* 如果已知宽高要移动 */
+            /* margin-top: -100px;
+            margin-left: -100px; */
+
+            /* 不知自身宽高transform: translate(50% 50%);  水平垂直都移动 自己宽高的50% */
+            /* transform: translateX(50%) translateY(50%); */
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        <div id="child"></div>
+    </div>
+</body>
+
+</html>

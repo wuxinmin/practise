@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // new一个实例化对象： 继承了构造函数里的属性和原型下的方法
+
+    // js中new一个对象的过程是什么？ 
+    // 1.创建一个空对象obj 
+    // 2.设置obj的__proto__指向构造函数的prototype
+    // 3.调用构造函数，把构造函数中的this指向新的对象实例
+    // 4.返回新对象obj
+
+    function Person(name) {
+      // this.name = name
+      var obj = {}
+      obj.name = name
+      obj.__proto__ = Person.prototype
+      return obj
+    }
+
+    Person.prototype.eating = function() {
+      console.log(this.name + ' is eating...')
+    }
+
+    var p1 = new Person('zs')
+    console.log(p1)
+    p1.eating()
+
+    // new的模拟 created方法做的事情就相当于new的过程
+    // 1.创建一个空对象obj 
+    // 2.设置obj的__proto__指向构造函数的prototype
+    // 3.调用构造函数，把构造函数中的this指向新的对象实例
+    // 4.返回新对象obj
+    function created () {
+      // arguments -> 调用方法时传的参数 类数组（是一个对象类型）
+      // arguments => [Student, 'xm', 18]
+      var obj = {}
+      var _constructor = [].shift.call(arguments) //获取构造函数 arguments里就是除第一项之后所有的参数 arguments => ['xm', 18]
+      obj.__proto__ = _constructor.prototype //设置obj的__proto__指向构造函数的prototype
+      var result = _constructor.apply(obj, arguments) // 改变this
+      return result instanceof Object ? result : obj
+    }
+
+    function Student(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    Student.prototype.coding = function() {
+      console.log(this.name + ' like coding...')
+    }
+
+    var s1 = created(Student, 'xm', 18)
+    console.log(s1)
+    s1.coding()
+
+
+
+
+  </script>
+</body>
+</html> 

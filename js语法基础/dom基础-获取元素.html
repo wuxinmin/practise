@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 此时按钮是对象 -->
+    <button id="btn">点我</button>
+
+    <ul id="ul1">
+        <li>item 1</li>
+        <li class="bg-red">item 2</li>
+        <li class="bg-red">item 3</li>
+    </ul>
+    
+    <script>
+        //获取元素
+        var btn = document.getElementById('btn');
+        //添加点击事件
+        btn.onclick = function(){
+            //打印
+            console.log("hello");
+        };
+
+
+        //获取多个li如果用getElementById太麻烦，方法
+        //数组可以存放多个元素
+/*   var arr = document.getElementsByTagName('li');
+        for(var i=0;i<arr.length;i++){
+            arr[i].style.background = '#f00';
+        }
+ */
+
+        //若只给后两个加  根据类名
+        var arr = document.getElementsByClassName('bg-red');
+        for(var i=0;i<arr.length;i++){
+            arr[i].style.background = '#f00'; 
+        }
+
+    </script>
+</body>
+</html>

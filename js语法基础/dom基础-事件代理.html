@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础-事件代理（委托）</title>
+</head>
+<body>
+
+    <ul id="ul1">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <script>
+        //aLi a就是数组，这是一个li数组，命名规范
+        var oUl = document.getElementById('ul1');
+        var aLi = oUl.getElementsByTagName('li');
+
+        //触发太多函数（子元素），解决办法绑给父元素
+        //也就是将li元素委托给父元素ul处理
+        oUl.onclick = function(){
+            e= e || window.event;//兼容性问题 而ie浏览器用e.srcElement
+            var target = e.srcElement || e.target;
+            console.log(target.innerHTML);
+        };//触发冒泡
+
+        //经典问题 this解决
+        for(var i=0; i<aLi.length; i++){
+            /* aLi[i].onclick = function()  
+            若i=10000就创建了10000个函数= function()相当于new 了function */
+            aLi[i].onclick = function(){
+                console.log(this.innerHTML);
+            };
+        }
+    </script>
+</body>
+</html>

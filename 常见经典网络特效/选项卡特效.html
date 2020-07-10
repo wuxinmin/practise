@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #global {
+            width: 600px;
+            height: 800px;
+            background: #eeeeee;
+            margin: 100px auto;
+        }
+
+        #global p {
+            width: 200px;
+            height: 150px;
+            line-height: 140px;
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .left {
+            background: #aa00ff;
+            float: left;
+        }
+
+        .center {
+            background: #ffbb77;
+            margin: 0 200px;
+        }
+
+        .right {
+            background: aqua;
+            float: right;
+
+        }
+
+        #global div {
+            width: 600px;
+            height: 260px;
+            background: #00ff00;
+            font-size: 18px;
+            /* 默认隐藏 */
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="global">
+        <p class="left">卧虎藏龙</p>
+        <p class="right">卧薪尝胆</p>
+        <p class="center">龙腾万里</p>
+        <div>指隐藏着未被发现的人才，也指隐藏不露的人才。北周·庾信《同会河阳公新造山地聊得寓目》诗：“暗石疑藏虎，盘根似卧龙。”</div>
+        <div>睡觉睡在柴草上，吃饭睡觉都尝一尝苦胆。形容人刻苦自励，发奋图强。《史记·越王勾践世家》：“越王勾践反国，乃苦身焦思，置胆于坐，坐卧即仰胆，饮食亦尝胆也。”</div>
+        <div>乾坤指天地指龙可以在无边天地自由翱翔，适合抒发情感或赠予他人。说这个人有理想有报复有能力，有很大的空间发展</div>
+    </div>
+
+
+    <script>
+
+        var oGlobal = document.getElementById("global");
+        var aP = oGlobal.getElementsByTagName('p');
+        var aDivs = oGlobal.getElementsByTagName('div');
+
+        document.onclick = function () {
+            for (var i = 0; i < aP.length; i++) {
+                aP[i].show = i;
+                aP[i].onclick = function () {
+
+                    //取消
+                    for (var j = 0; j < aP.length; j++) {
+                        aDivs[j].style.display = "none";
+                    }
+                    //显示
+                    aDivs[this.show].style.display = 'block';
+
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

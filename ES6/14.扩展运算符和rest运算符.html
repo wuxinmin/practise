@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //2.数组
+
+        /* function foo(...arg) {
+            console.log(arg);  //[1, 3, 4, 5, 6] (推荐) 普通数组  接收不确定的
+            // console.log(arguments);  //arguments数组
+        } 
+        foo(1,3,4,5,6); */
+
+        // let arr = [1,2,3,4,5];
+        //let arr2 = [1,2,3,4,5,6,7,8];
+        // let arr3 = [arr,6,7,8]; 
+        //输出： 
+        /* 0: (5) [1, 2, 3, 4, 5]
+           1: 6
+           2: 7
+           3: 8 
+        */
+        // let arr3 = [2,4,...arr,6,7,8]  //[2，4，1, 2, 3, 4, 5, 6, 7, 8]  可以作为数组中的任意部分进行扩展
+        // console.log(arr3);
+
+
+
+        //3.数组复制
+
+        /*  let arr = [1,2,3,4,5];
+         let arr2 = arr;
+ 
+         arr[0] = 'a';
+         console.log(arr2); //["a", 2, 3, 4, 5], 赋值完再修改为什么还可以修改，原因就是arr是引用数据类型，同一个堆内存
+ 
+ 
+         //[1] == [1]  吗?  不等地址不一样
+         let arr = [1,2,3,4,5];
+         let arr2 = [...arr];  //它相当于创建了一个新数组
+ 
+         arr[0] = 'a';
+         console.log(arr2); //[1,2,3,4,5] */
+
+
+        /* let arr = [['a','b'],2,3,4,5];
+        let arr2 = [...arr];  //他只能拿出一维数组下的东西
+
+        arr[0] [0]= 'x';
+        console.log(arr2); //[['x','b'],2,3,4,5] */
+
+
+        //4.数组合并
+
+        /* //以前：利用concat
+        let arr = [1,2];
+        let arr2 = [3,4];
+        // console.log(arr.concat(arr2));
+        let arr3 = [...arr,...arr2]  //利用扩展运算符
+        console.log(arr3); */
+
+
+        //5.合并对象
+        /* let obj1 = {
+            name: 'zs',
+            age: 18
+        }
+        let obj2 = {
+            school: 'gongda'
+        }
+
+        // $ extends
+        let obj3 = {
+            ...obj1,
+            ...obj2
+        }
+        console.log(obj3); */
+
+
+        //6.解构
+        /* //以前
+        let arr = [1,2,3,4];
+        let [a,b,c,d] = arr;
+
+        //now
+        let arr = [1,2,3,4];
+        let [a,b,c,d] = [...arr];
+        console.log(a,b,c,d); */
+
+        //rest  剩余运算符
+        function foo(a, b, ...rest) {
+
+            console.log(a, b, rest);
+        }
+        foo(1, 2, 3, 4, 5, 6);
+
+        function foo(a, ...rest, b) {
+
+            console.log(a, b, rest);  //报错，不能写中间
+        }
+        foo(1, 2, 3, 4, 5, 6);
+
+    </script>
+</body>
+
+</html>
